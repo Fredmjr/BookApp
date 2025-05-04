@@ -1,25 +1,26 @@
-import express from 'express'
-import sequelize from './config/db.js'
-import homeRouter from './routes/home.routes.js'
-import userRouter from './routes/user.routes.js'
-import adminRouter from './routes/admin.routes.js'
+import express from "express";
+import sequelize from "./config/db.js";
+import homeRouter from "./routes/home.routes.js";
+import userRouter from "./routes/user.routes.js";
+import adminRouter from "./routes/admin.routes.js";
+import dotenv from "dotenv";
 
-const app = express()
-app.use(express.json())
-app.use('/ui', homeRouter)
-app.use('/user', userRouter)
-app.use('/admin', adminRouter)
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT;
+app.use("/ui", homeRouter);
+app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 
 async function main() {
   await sequelize.sync({
-    force: true
-  })
+    force: true,
+  });
 
-  app.listen(4040, () => {
-
-    console.log('application running!')
-  })
+  app.listen(port, () => {
+    console.log("application running!");
+  });
 }
 
-main()
-
+main();
