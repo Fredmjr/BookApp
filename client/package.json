@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "localhost:3000",
+  "proxy": "https://localhost:3000",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "htmx.org": "^1.9.12",
+    "http-proxy-middleware": "^3.0.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.3"

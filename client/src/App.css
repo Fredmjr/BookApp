@@ -58,3 +58,11 @@ body{
   padding-left: 20px;
   padding-right: 20px;
 }
+
+#bookSingleCard{
+    width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  margin: 5px;
+  background:rgb(237, 236, 236);
+}
