@@ -9,7 +9,7 @@ export const createUser = async (req, res) => {
     const hashedpassword = createHmac('sha256', process.env.PRIVATE_KEY)
                 .update(password)
                 .digest('hex');
-    console.log(hashedpassword);
+    console.log(email);
 
   if(!email || !password){
     res.status(406).send('email or password is empty')

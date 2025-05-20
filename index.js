@@ -7,7 +7,7 @@ import userRouter from "./routes/user.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import dotenv from "dotenv";
 import authorization from "./middleware/authorization.js";
-
+import { expressjwt } from "express-jwt"
 
 dotenv.config();
 
@@ -24,7 +24,7 @@ app.use(express.json())
 
 app.use("/ui", homeRouter);
 app.use("/user", userRouter);
-app.use("/admin", adminRouter);
+app.use("/admin", expressjwt({ secret: process.env.PRIVATE_KEY, algorithms: ["HS256"] }), adminRouter);
 app.use('/admin', authorization)
 
 
