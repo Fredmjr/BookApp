@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const sequelize = new Sequelize(
-  `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@localhost:${process.env.DB_PORT}/database1`,
+  `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@db:${process.env.DB_PORT}/postgres`,
 );
 
 (async () => {
