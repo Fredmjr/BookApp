@@ -1,0 +1,21 @@
+<header id="header">
+  <nav>
+    <button class="circle transparent">
+      <i>menu</i>
+    </button>
+    <h6 class="max center-align"
+    onclick='reload()'>Bookapp</h6>
+    <button id="loginIcon"
+    class="circle transparent"
+    hx-get="/ui/login"
+    hx-swap="innerHTML"
+    hx-target="main">
+      <i>person</i>
+    </button>
+  </nav>
+</header>
+<script>
+    function reload(){
+        window.location.href = '/'
+    }
+</script>

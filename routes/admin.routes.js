@@ -8,4 +8,7 @@ router.get('/books', getAllBooks)
 router.get('/book/:id', getBookById)
 router.patch('/updatebook/:id', updateBook)
 router.delete('/deletebook/:id', deleteBook)
+router.get('/dashboard', (req, res) => {
+    res.render('components/admindashboard');
+});
 export default router

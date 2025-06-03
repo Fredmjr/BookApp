@@ -56,7 +56,7 @@ export const authentication = async (req, res) =>{
     }
 
   } catch (error) {
-    res.send("something wrong happened while getting the book")
+    res.send("failed to login")
     console.log(error)
     res.status(500)
   }

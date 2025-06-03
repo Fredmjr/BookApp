@@ -8,6 +8,7 @@ import adminRouter from "./routes/admin.routes.js";
 import dotenv from "dotenv";
 import authorization from "./middleware/authorization.js";
 import { expressjwt } from "express-jwt"
+import hbs from "hbs";
 
 dotenv.config();
 
@@ -17,8 +18,10 @@ const port = process.env.PORT;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.set("view engine", "hbs")
-app.set("/views", path.join(__dirname, 'views'))
-app.use(express.static('./client/dist'));
+app.set("/views", path.join(__dirname, 'views', 'components'))
+hbs.registerPartials(__dirname + '/views/components', function (err) {});
+
+app.use(express.static('public'));
 
 app.use(express.json())
 
@@ -26,8 +29,12 @@ app.use("/ui", homeRouter);
 app.use("/user", userRouter);
 app.use("/admin", expressjwt({ secret: process.env.PRIVATE_KEY, algorithms: ["HS256"] }), adminRouter);
 app.use('/admin', authorization)
-
-
+app.get('/', (req, res) =>{
+  res.render('index')
+})
+/* app.get('/dashboard', (req, res) =>{
+  res.render('components/dashboard')
+}) */
 
 async function main() {
   await sequelize.sync({
