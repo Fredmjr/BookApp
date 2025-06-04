@@ -3,6 +3,27 @@ const { createHmac } = await import('node:crypto');
 import jwt from 'jsonwebtoken'
 
 
+
+// Resetting user table (delete all users and reset auto-incrementing id)
+//it restarts the user table from sratch, meaing all data is destroyed!!!!!!!
+//run only once, when you wanto have a new clean user table start
+/* async function resetuserModel() {
+    try {
+        await userModel.destroy({
+            truncate: true,
+            cascade: false, 
+            restartIdentity: true // PostgreSQL specific: resets the sequence
+        });
+        console.log('All data from user table deleted and sequence reset.');
+
+    } catch (error) {
+        console.error('Error resetting user table:', error);
+    }
+}
+resetuserModel(); */
+
+
+
 //creating user with email and password
 export const createUser = async (req, res) => {
   const { email, password } = req.body
@@ -14,10 +35,17 @@ export const createUser = async (req, res) => {
   if(!email || !password){
     res.status(406).send('email or password is empty')
   }
-  try {
+  try { 
+    //added this code to check if useModel is empty, if empty first user is made admin, 
+    // jusst two line below, if remove will still work the same but no first user admin -by fred.
+    const existingUsers = await userModel.findAll();
+    const admin = existingUsers.length === 0;
+
+    //this does need above two lines of code to create user
     let user = await userModel.create({
       email: email,
-      password: hashedpassword
+      password: hashedpassword,
+      admin,
     })
     res.send(user)
   }
@@ -26,6 +54,8 @@ export const createUser = async (req, res) => {
     res.send('something wrong happened while creating user')
   }
 } 
+
+
 
 
 //comparing email and password, then returning jwt to the client
@@ -39,18 +69,25 @@ export const authentication = async (req, res) =>{
     const user = await userModel.findAll({
   where: {
     email: email,
-  },
-});
-    console.log(user)
+    },
+  });
+
+    console.log(user);
+
     if(user){
-          if(user[0].dataValues.password === newHashedpassword){
-    let JWT = jwt.sign(JSON.stringify(user), process.env.PRIVATE_KEY)
-      res.status(200).json({
-        'token': JWT,
-      })
-    console.log(JWT)
+      if(user[0].dataValues.password === newHashedpassword){
+      let JWT = jwt.sign(JSON.stringify(user), process.env.PRIVATE_KEY)
+
+    //redirecting the user to user or admin page based on the user login admin userModel state   
+      if(user[0].admin === true){
+          res.status(200).json({'token': JWT, redirect: true, redirectUrl: '/admin/dashboard'});
+      } else{
+          res.status(200).json({'token': JWT, redirect: true, redirectUrl: '/user/dashboard'});
+      }
+
+      console.log(JWT)
     } 
-    else if (user[0].dataValues.password != newHashedpassword){
+    else if (user[1].dataValues.password != newHashedpassword){
       res.send('password incorrect!')
     }
     }

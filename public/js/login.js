@@ -1,5 +1,4 @@
-
-        function authen() {
+/* function authen() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const adminEmail = 'adminrights@gmail.com';
@@ -12,6 +11,10 @@
         return;
     }
 
+
+    //fetch store
+
+    //compar redic
            if (inputValue1 === adminEmail) {
                 window.location = '/admin/dashboard';
             } 
@@ -66,3 +69,31 @@ function crtAccount(){
 }
 
 
+ */
+
+
+fetch('/user/login', {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json'
+    },
+    
+    body: JSON.stringify(
+        {
+  "email":"adminrights@gmail.com",
+  "password": "D7?q7Ajg:Sv4jwZ"
+}
+
+    )
+})
+    .then(response => response.json())
+    .then(data => {
+          if (data.token) {
+        localStorage.setItem('jwtToken', data.token);
+        console.log(data.token);
+    }
+
+      if(data.redirect){
+      window.location.href = data.redirectUrl;
+      }
+    });

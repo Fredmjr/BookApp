@@ -9,8 +9,12 @@ const userModel = sequelize.define(
   password: {
     type: DataTypes.TEXT,
     allowNull: false,
-  }
-
+  },
+   admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    }
 }
 )
 

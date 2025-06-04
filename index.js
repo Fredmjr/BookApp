@@ -32,9 +32,9 @@ app.use('/admin', authorization)
 app.get('/', (req, res) =>{
   res.render('index')
 })
-/* app.get('/dashboard', (req, res) =>{
-  res.render('components/dashboard')
-}) */
+//use this to make changes to any tables in the databse, and turn it off when you run that change.
+//only run it once to apply changes!!!!!!!1
+/* sequelize.sync({ alter: true }) */
 
 async function main() {
   await sequelize.sync({
