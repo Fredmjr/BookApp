@@ -3,7 +3,7 @@ const { createHmac } = await import('node:crypto');
 import jwt from 'jsonwebtoken'
 
 
-
+//important
 // Resetting user table (delete all users and reset auto-incrementing id)
 //it restarts the user table from sratch, meaing all data is destroyed!!!!!!!
 //run only once, when you wanto have a new clean user table start
@@ -79,7 +79,7 @@ export const authentication = async (req, res) =>{
       let JWT = jwt.sign(JSON.stringify(user), process.env.PRIVATE_KEY)
 
     //redirecting the user to user or admin page based on the user login admin userModel state   
-      if(user[0].admin === true){
+      if(user[0].dataValues.admin === true){
           res.status(200).json({'token': JWT, redirect: true, redirectUrl: '/admin/dashboard'});
       } else{
           res.status(200).json({'token': JWT, redirect: true, redirectUrl: '/user/dashboard'});
@@ -87,13 +87,15 @@ export const authentication = async (req, res) =>{
 
       console.log(JWT)
     } 
-    else if (user[1].dataValues.password != newHashedpassword){
-      res.send('password incorrect!')
+    else if (user[0].dataValues.password != newHashedpassword){
+      res.json({
+        "errormgs": "password incorrect!"
+      });
     }
     }
 
   } catch (error) {
-    res.send("failed to login")
+    res.json("failed to login")
     console.log(error)
     res.status(500)
   }
@@ -101,6 +103,28 @@ export const authentication = async (req, res) =>{
 let array = [{
   id:1
 }, {id:2}, {id:3}]
+
+
+
+//clg all the book from database
+
+export const getAllusers = async (req, res) =>{
+try {
+  const allUsers = await userModel.findAll();
+  if(!allUsers){
+    res.status(404).send('No user found')
+  }
+  console.log(allUsers)
+  res.send(allUsers)
+} catch (error) {
+  console.log("something wrong happened while getting users")
+}
+}
+
+
+
+
+
 /* 
 //updating a book
 export const updateUser = async (req, res) =>{

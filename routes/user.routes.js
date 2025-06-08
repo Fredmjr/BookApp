@@ -1,6 +1,6 @@
 import express from 'express'
 import { homeHandler } from '../controllers/home.controllers.js'
-import { createUser, authentication } from '../controllers/user.controllers.js'
+import { createUser, authentication, getAllusers } from '../controllers/user.controllers.js'
 const router = express.Router()
 router.get('/', homeHandler)
 router.post('/signup', createUser)
@@ -12,4 +12,6 @@ router.get('/adminbooks', (req, res)=>{
 router.get('/dashboard', (req, res) => {
     res.render('components/userdashboard');
 });
+
+router.get('/allusers', getAllusers)
 export default router

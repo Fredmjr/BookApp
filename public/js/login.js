@@ -1,7 +1,39 @@
-/* function authen() {
+//Auto login
+const nameless = ()=>{
+       console.log(localStorage.getItem('jwtToken'))
+    if(localStorage.getItem('jwtToken')){
+       autologin()
+    } else{
+        return
+    }
+}
+
+nameless();
+
+
+function autologin (){
+        fetch('/admin/dashboard',{
+        method: 'GET',
+         headers: {
+  'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`
+    },
+
+    })
+    .then(response => response.text())
+    .then(data => {
+        let page = document.querySelector('main');
+        console.log(data)
+        page.outerHTML = `${data}`;
+    })
+}
+
+
+
+
+function authen() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
-            const adminEmail = 'adminrights@gmail.com';
 
             const inputValue1 = emailInput.value;
             const inputValue2 = passwordInput.value;
@@ -11,18 +43,47 @@
         return;
     }
 
+    let clientData = {
+    "email": inputValue1,
+    "password": inputValue2, 
+    } 
+    console.log(clientData)
+//jjjjjjjjjjjjjjjjj
+fetch('/user/login', {
+    
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json'
+    },
+    
+    body: JSON.stringify(clientData)
+})
+    .then(response => response.json())
+    .then(data => {          
+        if (data.token) {
+        localStorage.setItem('jwtToken', data.token);
+        console.log(data.token);
+    }
+     /*  if(data.redirect){
+      window.location.href = data.redirectUrl;
+      } */
+    });
+    console.log(localStorage.getItem('jwtToken'));
+    fetch('/admin/dashboard',{
+        method: 'GET',
+         headers: {
+  'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`
+    },
 
-    //fetch store
-
-    //compar redic
-           if (inputValue1 === adminEmail) {
-                window.location = '/admin/dashboard';
-            } 
-            else {
-               document.getElementById('loginPage').style.display = 'none';
-               document.getElementById('signupMgs').style.display = 'block';
-            }
-                    }
+    })
+    .then(response => response.text())
+    .then(data => {
+        let page = document.querySelector('html');
+        console.log(data)
+        page.innerHTML = `${data}`;
+    })
+}
 
     const signupLoginBtn = document.getElementById('signupLoginBtn');
     signupLoginBtn.addEventListener('click', ()=>{
@@ -69,10 +130,10 @@ function crtAccount(){
 }
 
 
- */
 
 
-fetch('/user/login', {
+
+/* fetch('/user/login', {
   method: 'POST',
   headers: {
   'Content-Type': 'application/json'
@@ -96,4 +157,4 @@ fetch('/user/login', {
       if(data.redirect){
       window.location.href = data.redirectUrl;
       }
-    });
+    }); */

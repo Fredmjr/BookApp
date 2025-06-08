@@ -1,4 +1,4 @@
-
+/* 
 const loginIcon = document.getElementById('loginIcon');
 const header = document.getElementById('header');
 document.addEventListener('click', (event)=>{
@@ -6,3 +6,4 @@ document.addEventListener('click', (event)=>{
         header.style.display = 'none'
     }
 })
+ */

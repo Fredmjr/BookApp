@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/beercss@3.11.11/dist/cdn/beer.min.css" rel="stylesheet">
-<script defer type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.11.11/dist/cdn/beer.min.js"></script>
-<script defer type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <link href="/css/beer.min.css" rel="stylesheet">
+
+<script defer type="module" src="/js/beer.min.js"></script>
+<script defer type="module" src="/js/material-dynamic-colors.min.js"></script>
     <title>bookapp</title>
 </head>
 <body>
     {{>header}}
     {{>main}}
-     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-     <script src="./js/app.js"></script>
+     <script src="/js/htmx.min.js"></script>
+     <script src="/js/app.js"></script>
+     <script type="module" src="/js/admin_function/addbook.js"></script>
 </body>
 </html>
