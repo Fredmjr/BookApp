@@ -5,3 +5,5 @@ docker-compose copy.yaml
 trash_code
 ./bin
 bin
+./uploads
+uploads
