@@ -14,6 +14,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
+      #START -- here you choose to do (1).docker image or (2).test run
       - name: setup buildx
         uses: docker/setup-buildx-action@v3
 
@@ -22,9 +23,10 @@ jobs:
 
       - name: saving artifact
         run: docker save bookapp:latest | gzip > bookapp.tar.gz
-
+      #save & download is optional - for self testing.
       - name: upload arttifact
         uses: actions/upload-artifact@v4
         with:
           name: bookapp-image
           path: bookapp.tar.gz
+#END -- here you choose to do (1).docker image or (2).test run
