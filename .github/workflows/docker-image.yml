@@ -18,7 +18,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: build the Docker image
-        run: docker build -t bookapp:latest
+        run: docker build -t bookapp:latest .
 
       - name: saving artifact
         run: docker save bookapp:latest | gzip > bookapp.tar.gz
