@@ -1,0 +1,30 @@
+<main>
+  <p>admin dashbard</p>
+  <div class="actions">
+    <button class="border square extra" data-ui="#addBookDialog">
+      <i>add</i>
+    </button>
+  </div>
+  <div id="dialogDiv">
+    <dialog id="addBookDialog" class="modal">
+      <h5>Create book</h5>
+      <div id="dropfilesContainer" class="field label border">
+        <input name="file" id="dropfilesInput" type="file" />
+        <p>Bookcover</p>
+      </div>
+      <div class="field label border">
+        <input name="title" id="bookTitle" type="text" />
+        <label>Book Title</label>
+      </div>
+      <div class="field label border">
+        <input name="url" id="bookUrl" type="text" />
+        <label>Book url</label>
+      </div>
+      <nav class="right-align no-space">
+        <button id="cancelBtn" class="" data-ui="#addBookDialog">Cancel</button>
+        <button class="" id="createBtn" onclick="createBook()">Confirm</button>
+      </nav>
+    </dialog>
+  </div>
+
+</main>

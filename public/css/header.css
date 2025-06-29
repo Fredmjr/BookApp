@@ -1,0 +1,70 @@
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001; /* Ensure it's above other content */
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Drawer Styling */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw; /* 50% of viewport width */
+  height: 100vh; /* Full viewport height */
+  background-color: #333;
+  color: white;
+  transform: translateX(-100%); /* Start off-screen to the left */
+  transition: transform 0.3s ease-in-out; /* Smooth slide animation */
+  z-index: 1000; /* Ensure it's above main content but below button */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  padding-top: 60px; /* Space for content below button if needed */
+}
+
+.drawer.open {
+  transform: translateX(0); /* Slide into view */
+}
+
+.drawer-content {
+  padding: 20px;
+}
+
+.drawer-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer-content li {
+  margin-bottom: 15px;
+}
+
+.drawer-content a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 10px 0;
+  transition: background-color 0.2s ease;
+}
+
+.drawer-content a:hover {
+  background-color: brown;
+  color: wheat;
+  border-radius: 3px;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.main-content {
+  padding: 20px;
+  text-align: center;
+}

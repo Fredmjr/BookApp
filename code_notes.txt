@@ -1,0 +1,31 @@
+
+  const { title, file } = req.body;
+  if (!title || !file) {
+    res.status(406).send("Title or File is empty");
+  }
+  try {
+    await bookModel.create({
+      title,
+      file,
+    });
+    res.send("book created");
+  } catch (error) {
+    console.log(error);
+    res.send("something wrong happened while creating the book");
+  }
+
+
+
+
+
+
+
+
+
+
+  curl -X POST 'http://localhost:3000/admin/addbook' \
+  --header 'Content-Type: multipart/form-data' \
+  --form file=@C:\Users\Fredmjr\Downloads\black-white-painting-black-white-painting-with-black-background.jpg \
+  --form 'title=background' \
+  --form 'url=./uploads' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.W3siaWQiOjEsImVtYWlsIjoiZXhhbXBsZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6ImI1OTQ0OGQxN2IzZDJmOGY0YmQwNzg3OTI5OWI1MjI5OTFjZDdmNWQ0OTQ4NTI3OTYwNjg1MjhmOGE5MzMzNjQiLCJjcmVhdGVkQXQiOiIyMDI1LTA2LTAyVDEzOjI4OjA3LjAxOFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA2LTAyVDEzOjI4OjA3LjAxOFoifV0.j0lTYMUOlk8rrHN9SrD2zcKwXEjhAmv75ZOfNPBHkeY'

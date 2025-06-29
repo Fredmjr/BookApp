@@ -1,0 +1,22 @@
+#dropfilesContainer {
+  border: 2px dashed;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: wheat;
+}
+#dropfilesContainer #dropfilesInput:hover {
+  cursor: pointer;
+}
+
+#createBtn {
+  background-color: brown;
+  color: wheat;
+  margin: 0px 5px;
+}
+
+#cancelBtn {
+  background-color: brown;
+  color: wheat;
+  margin: 0px 5px;
+}

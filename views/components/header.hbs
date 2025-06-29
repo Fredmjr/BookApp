@@ -1,0 +1,38 @@
+<header id="header">
+  <nav>
+
+    <button id="menuButton" class="circle transparent">
+      <i>menu</i>
+
+    </button>
+    <div class="drawer" id="sideDrawer">
+      <div class="drawer-content">
+        <h3>Drawer Menu</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <br />
+          <br />
+          <li id="logoutBtn"><a href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h6 class="max center-align" onclick="reload()">Bookapp</h6>
+    <button
+      id="loginIcon"
+      class="circle transparent"
+      hx-get="/ui/login"
+      hx-swap="innerHTML"
+      hx-target="main"
+    >
+      <i>person</i>
+    </button>
+  </nav>
+</header>
+<script>
+  function reload(){ window.location.href = '/' }
+</script>
