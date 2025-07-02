@@ -14,6 +14,8 @@ import {
   readFile,
   deleteBookdata /*  
   updateBookdata, */,
+  contentviewpage,
+  queryfileImage,
 } from "../controllers/book.controllers.js";
 
 const router = express.Router();
@@ -27,6 +29,7 @@ router.get("/book/:id", getBookById);
 router.patch("/updatebook/:id", updateBook);
 router.delete("/deletebook/:id", deleteBook);
 router.post("/uploadToS3bookcovers", uploadToS3bookcovers);
+router.get("/queryfile/:id", queryfileImage);
 router.get("/queryinfo/:id", queryInfo);
 router.get("/downloadquery/:id", dlQfile);
 router.get("/readfile/:name", readFile);
@@ -35,6 +38,7 @@ router.delete("/deletebookdata/:name", deleteBookdata);
 router.post("/createbucket", createS3Bucket);
 router.delete("/deletebucket", deleteS3Bucket);
 
+router.get("/contentviewpage", contentviewpage);
 router.get("/dashboard", (req, res) => {
   res.render("components/admindashboard");
 });

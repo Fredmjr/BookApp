@@ -20,10 +20,11 @@ jobs:
 
       - name: build the Docker image
         run: docker build -t bookapp:latest .
+        #saving and uplaoding has to be made, adding in the future
 
+      #save & download is optional - for self testing.
       - name: saving artifact
         run: docker save bookapp:latest | gzip > bookapp.tar.gz
-      #save & download is optional - for self testing.
       - name: upload arttifact
         uses: actions/upload-artifact@v4
         with:

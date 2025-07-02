@@ -1,0 +1,144 @@
+.view-book-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff06;
+  border: 1px solid #dddddd05;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+}
+
+.view-book-left {
+  width: 30%;
+  margin-right: 20px;
+}
+
+.view-book-cover {
+  width: 100%;
+}
+
+.view-book-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.view-book-right {
+  width: 70%;
+}
+
+.view-book-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.view-book-author {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.vi-book-rating {
+  margin-bottom: 20px;
+}
+
+.vi-book-rating span {
+  font-size: 16px;
+  color: #666;
+}
+
+.view-book-price {
+  margin-bottom: 20px;
+}
+
+.view-book-price span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #b12704;
+}
+
+.view-book-original-price {
+  text-decoration: line-through;
+  font-size: 18px;
+  color: #666;
+  margin-left: 10px;
+}
+
+.view-book-description {
+  margin-bottom: 20px;
+}
+
+.view-book-description p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.view-book-actions {
+  margin-top: 20px;
+}
+
+.vi-btn-buy-now,
+.vi-btn-add-to-cart {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.vi-btn-buy-now {
+  background-color: #ff9900;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.vi-btn-buy-now:hover {
+  background-color: #ffad33;
+}
+
+.vi-btn-add-to-cart {
+  background-color: #333;
+  color: #fff;
+}
+
+.vi-btn-add-to-cart:hover {
+  background-color: #444;
+}
+
+/* Mobile Screen Sizes (max-width: 768px) */
+@media only screen and (max-width: 768px) {
+  .view-book-container {
+    flex-direction: column;
+  }
+  .view-book-left {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .view-book-right {
+    width: 100%;
+  }
+}
+
+/* Medium Screen Sizes (min-width: 769px and max-width: 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .view-book-container {
+    max-width: 90%;
+  }
+  .view-book-left {
+    width: 40%;
+  }
+  .view-book-right {
+    width: 60%;
+  }
+}
+
+/* Large Screen Sizes (min-width: 1025px) */
+@media only screen and (min-width: 1025px) {
+  .view-book-container {
+    max-width: 70%;
+  }
+}

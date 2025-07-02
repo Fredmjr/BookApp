@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 import sequelize from "../config/db.js";
 import { v4 as uuidv4 } from "uuid";
 import { constants } from "buffer";
+import { error } from "console";
 
 const fileUuid = uuidv4();
 const fields = {};
@@ -401,3 +402,121 @@ export const deleteBookdata = async (req, res) => {
     console.log(error);
   }
 } */
+
+export const updateBookdata = async (req, res) => {
+  const name = req.params.name;
+  try {
+    const busboy = Busboy({ headers: req.headers });
+
+    const bucketName = "bookcovers";
+    let fields = {};
+    let objectName = "";
+    busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
+      if (!filename) {
+        return res.status(400).send("No file uploaded.");
+      }
+      //combined time+uuid+filename(this way we have no file dupplicates, unique filename and original extension)
+      const fileExtention = path.extname(filename.filename);
+      objectName = `${Date.now()}` + `${fileUuid}` + `${fileExtention}`;
+
+      minioClient.putObject(bucketName, objectName, file, (err, etag) => {
+        if (err) {
+          console.error("Upload error:", err);
+          return res.status(500).send("Error uploading file.");
+        }
+        console.log("Upload successful. ETag:", etag);
+      });
+    });
+
+    busboy.on("field", (fieldname, value) => {
+      fields[fieldname] = value;
+    });
+
+    busboy.on("finish", async () => {
+      try {
+        const filePath = `${bucketName}/` + `${objectName}`;
+
+        book.file = filePath;
+        //bucketname remains untouched
+        book.namefile = objectName;
+        book.title = fields.title;
+        book.description = fields.description;
+        await book.save();
+        //delete
+
+        console.log("Book saved:", newBook);
+        res.status(200).send(newBook);
+      } catch (err) {
+        console.error("Database save error:", err);
+        res
+          .status(500)
+          .send("File upload succeeded, but database save failed.");
+        console.log(err);
+      }
+    });
+
+    req.pipe(busboy);
+  } catch (error) {
+    console.error("Unexpected error:", error);
+    res.status(500).send("Server error.");
+  }
+};
+
+export const contentviewpage = (req, res) => {
+  /*   console.log("something something"); */
+  res.render("components/bookcontent");
+};
+
+//reading image filefrom s3
+export const queryfileImage = async (req, res) => {
+  let id = req.params.id;
+
+  try {
+    if (id) {
+      const queryData = await bookModel.findByPk(id);
+      const filePath = queryData.file;
+      const [bucketName, objectName] = filePath.split("/");
+
+      const file = await minioClient.getObject(bucketName, objectName);
+
+      let contentType = "application/octet-stream";
+
+      switch (objectName) {
+        case "png":
+          contentType = "image/png";
+          break;
+        case "jpg":
+        case "jpeg":
+          contentType = "image/jpeg";
+          break;
+        case "gif":
+          contentType = "image/gif";
+          break;
+        case "pdf":
+          contentType = "application/pdf";
+          break;
+        case "mp4":
+          contentType = "video/mp4";
+          break;
+      }
+
+      res.setHeader("Content-Type", contentType);
+
+      const fileStream = await minioClient.getObject(bucketName, objectName);
+
+      fileStream.pipe(res);
+
+      fileStream.on("error", (err) => {
+        console.error("Error streaming file:", err);
+        if (!res.headersSent) {
+          res.status(500).send("Error retrieving file.");
+        }
+      });
+
+      /* res.send(objectName); */ //how to send here file here after getting from s3
+    }
+  } catch (error) {
+    res.send("read file failed");
+    console.log(error);
+  }
+};

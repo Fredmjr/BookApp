@@ -1,4 +1,36 @@
 <main>
+  <div id="contBody">
+    <div id="card-section">
+      <div class="section-title">👤 User View Section</div>
+      <div class="container">
+        <div class="card" onclick="showDetails('All Users')">All Users</div>
+        <div class="card" onclick="showDetails('User Content View')">User
+          Content View</div>
+        <div class="card" onclick="showDetails('User Roles')">User Roles</div>
+        <div class="card" onclick="showDetails('New Users')">New Users</div>
+      </div>
+
+      <div class="section-title">📚 Book Session</div>
+      <div class="container">
+        <div class="card" onclick="showDetails('Create Book')">Create Book</div>
+        <div class="card" onclick="showDetails('Read Book')">Read Book</div>
+        <div class="card" onclick="showDetails('Update Book')">Update Book</div>
+        <div class="card" onclick="showDetails('Delete Book')">Delete Book</div>
+        <div class="card" onclick="showDetails('All Available Books')">All
+          Available Books</div>
+        <div class="card" onclick="showDetails('All Deleted Books')">All Deleted
+          Books</div>
+      </div>
+    </div>
+
+    <div id="detail-view" class="detail-view">
+      <button class="close-btn" onclick="hideDetails()">×</button>
+      <h2 id="detail-title"></h2>
+      <p style="color:#aaa">This is a placeholder detail panel. Add content here
+        dynamically if needed.</p>
+    </div>
+  </div>
+
   <p>admin dashbard</p>
   <div class="actions">
     <button class="border square extra" data-ui="#addBookDialog">
