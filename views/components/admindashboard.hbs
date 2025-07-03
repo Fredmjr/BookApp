@@ -1,37 +1,113 @@
 <main>
-  <div id="contBody">
+  <div>
     <div id="card-section">
-      <div class="section-title">👤 User View Section</div>
+      <div class="section-title"> User View Section</div>
       <div class="container">
-        <div class="card" onclick="showDetails('All Users')">All Users</div>
-        <div class="card" onclick="showDetails('User Content View')">User
-          Content View</div>
-        <div class="card" onclick="showDetails('User Roles')">User Roles</div>
-        <div class="card" onclick="showDetails('New Users')">New Users</div>
+        <div class="card" id="alluserBtn" onclick="showPanel('all-users')">All
+          Users</div>
+        <div class="card" onclick="showPanel('user-content')">User Content View</div>
+        <div class="card" onclick="showPanel('user-roles')">User Roles</div>
+        <div class="card" onclick="showPanel('new-users')">New Users</div>
       </div>
 
-      <div class="section-title">📚 Book Session</div>
+      <div class="section-title"> Book Session</div>
       <div class="container">
-        <div class="card" onclick="showDetails('Create Book')">Create Book</div>
-        <div class="card" onclick="showDetails('Read Book')">Read Book</div>
-        <div class="card" onclick="showDetails('Update Book')">Update Book</div>
-        <div class="card" onclick="showDetails('Delete Book')">Delete Book</div>
-        <div class="card" onclick="showDetails('All Available Books')">All
-          Available Books</div>
-        <div class="card" onclick="showDetails('All Deleted Books')">All Deleted
+        <div class="card" onclick="showPanel('create-book')">Create Book</div>
+        <div class="card" onclick="showPanel('read-book')">Read Book</div>
+        <div class="card" onclick="showPanel('update-book')">Update Book</div>
+        <div class="card" onclick="showPanel('delete-book')">Delete Book</div>
+        <div class="card" onclick="showPanel('available-books')">All Available
           Books</div>
+        <div class="card" onclick="showPanel('deleted-books')">All Deleted Books</div>
       </div>
     </div>
 
-    <div id="detail-view" class="detail-view">
-      <button class="close-btn" onclick="hideDetails()">×</button>
-      <h2 id="detail-title"></h2>
-      <p style="color:#aaa">This is a placeholder detail panel. Add content here
-        dynamically if needed.</p>
-    </div>
-  </div>
+    <!-- Content Panels -->
+    <div id="all-users" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>All Users
 
-  <p>admin dashbard</p>
+        <div>
+
+        </div>
+      </h2></div>
+    <div id="user-content" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>User Content View</h2>
+    </div>
+    <div id="user-roles" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>User Roles</h2></div>
+    <div id="new-users" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>New Users</h2></div>
+    <div id="create-book" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>Create Book</h2>
+      <p>admin dashbard</p>
+      <div class="actions">
+        <button class="border square extra" data-ui="#addBookDialog">
+          <i>add</i>
+        </button>
+      </div>
+      <div id="dialogDiv">
+        <dialog id="addBookDialog" class="modal">
+          <h5>Create book</h5>
+          <div id="dropfilesContainer" class="field label border">
+            <input name="file" id="dropfilesInput" type="file" />
+            <p>Bookcover</p>
+          </div>
+          <div class="field label border">
+            <input name="title" id="bookTitle" type="text" />
+            <label>Book Title</label>
+          </div>
+          <div class="field label border">
+            <input name="url" id="bookUrl" type="text" />
+            <label>Book url</label>
+          </div>
+          <nav class="right-align no-space">
+            <button
+              id="cancelBtn"
+              class=""
+              data-ui="#addBookDialog"
+            >Cancel</button>
+            <button
+              class=""
+              id="createBtn"
+              onclick="createBook()"
+            >Confirm</button>
+          </nav>
+        </dialog>
+      </div>
+    </div>
+    <div id="read-book" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>Read Book</h2></div>
+    <div id="update-book" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>Update Book</h2></div>
+    <div id="delete-book" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>Delete Book</h2></div>
+    <div id="available-books" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>All Available Books</h2></div>
+    <div id="deleted-books" class="content-panel"><button
+        class="close-btn"
+        onclick="hidePanel()"
+      >×</button><h2>All Deleted Books</h2></div>
+  </div>
+  {{! .........................................original upload function......................................... }}
+  {{!   <p>admin dashbard</p>
   <div class="actions">
     <button class="border square extra" data-ui="#addBookDialog">
       <i>add</i>
@@ -57,6 +133,6 @@
         <button class="" id="createBtn" onclick="createBook()">Confirm</button>
       </nav>
     </dialog>
-  </div>
+  </div> }}
 
 </main>

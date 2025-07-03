@@ -1,10 +1,40 @@
-function showDetails(title) {
-  document.getElementById("card-section").classList.add("hidden");
-  document.getElementById("detail-title").textContent = title;
-  document.getElementById("detail-view").style.display = "block";
+function showPanel(id) {
+  document.getElementById("card-section").style.display = "none";
+  document.querySelectorAll(".content-panel").forEach((panel) => {
+    panel.style.display = "none";
+  });
+  document.getElementById(id).style.display = "block";
 }
 
-function hideDetails() {
-  document.getElementById("detail-view").style.display = "none";
-  document.getElementById("card-section").classList.remove("hidden");
+function hidePanel() {
+  document.getElementById("card-section").style.display = "block";
+  document.querySelectorAll(".content-panel").forEach((panel) => {
+    panel.style.display = "none";
+  });
 }
+
+//...........................................all users in db.................................................
+const alluserBtn = document.getElementById(".alluserBtn");
+console.log(alluserBtn);
+
+fetch("/user/allusers", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    const prevDiv = document.createElement("div");
+    prevDiv.innerHTML = `
+      <div>
+      ${data.email}
+    </div>
+      
+      `;
+    /* document.body.appendChild(prevDiv); */
+    let page = document.querySelector("main");
+    page.innerHTML = prevDiv.innerHTML;
+    console.log(data);
+  });

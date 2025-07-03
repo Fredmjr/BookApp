@@ -80,12 +80,16 @@ export const authentication = async (req, res) => {
             token: JWT,
             redirect: true,
             redirectUrl: "/admin/dashboard",
+            adminPg: true,
+            //keyvalues for admin page
           });
         } else {
           res.status(200).json({
             token: JWT,
             redirect: true,
             redirectUrl: "/user/dashboard",
+            //keyvalues for users page
+            adminPg: false,
           });
         }
 

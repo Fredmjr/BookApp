@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.token) {
           localStorage.setItem("jwtToken", data.token);
           console.log(data.token);
-
+          console.log(localStorage.getItem("jwtToken"));
           /*           .then((response) => response.text())
             .then((data) => {
               let page = document.querySelector("html");
@@ -64,14 +64,57 @@ document.addEventListener("DOMContentLoaded", function () {
               page.innerHTML = `${data}`;
             }); */
         }
+
         /*  if(data.redirect){
         window.location.href = data.redirectUrl;
         } */
+        if (localStorage.getItem("jwtToken")) {
+          if (data.adminPg === true) {
+            console.log("admins page");
+            fetch("/admin/dashboard", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+              },
+            })
+              .then((response) => response.text())
+              .then((data) => {
+                let page = document.querySelector("main");
+                console.log("here!!!!!!!!!!!!!!!!!");
+                console.log(data + "here!!!!!!!!!!!!!!!!!");
+                page.outerHTML = `${data}`;
+              });
+          } else if (data.adminPg === false) {
+            console.log("user page");
+            fetch("/user/dashboard", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                /*                 Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, */ //we have no bearer token for this.
+              },
+            })
+              .then((response) => response.text())
+              .then((data) => {
+                let page = document.querySelector("main");
+                console.log("here!!!!!!!!!!!!!!!!!");
+                console.log(data + "here!!!!!!!!!!!!!!!!!");
+                page.outerHTML = `${data}`;
+              });
+          } else {
+            console.log(
+              "(1).extra user page, coming soon! or (2).sign up page!"
+            );
+          }
+        }
       });
-    console.log(localStorage.getItem("jwtToken"));
-    //fetch page swap run after token is stored
 
-    fetch("/admin/dashboard", {
+    //////still adjusting here admin and user redirect ust be fix, only admin coming out
+    /*     if (data.redirect) {
+      window.location.href = data.redirectUrl;
+    } */
+
+    /*     fetch("/admin/dashboard", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -81,10 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.text())
       .then((data) => {
         let page = document.querySelector("main");
-        /* console.log(data); */
         page.outerHTML = `${data}`;
-      });
+      }); */
   };
+
   document.addEventListener("DOMContentLoaded", function () {
     const signupLoginBtn = document.getElementById("signupLoginBtn");
     signupLoginBtn.addEventListener("click", () => {
