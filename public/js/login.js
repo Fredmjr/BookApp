@@ -1,3 +1,6 @@
+//................................................ NOTE ................................................
+//Besides DOMloaded use Chaining Fetch Reqs (within each other), If statements to check errors & Select elements to map desired data
+
 document.addEventListener("DOMContentLoaded", function () {
   //Auto login
   function nameless() {
@@ -81,9 +84,18 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((response) => response.text())
               .then((data) => {
                 let page = document.querySelector("main");
-                console.log("here!!!!!!!!!!!!!!!!!");
-                console.log(data + "here!!!!!!!!!!!!!!!!!");
+                /*                 console.log("here!!!!!!!!!!!!!!!!!");
+                console.log(data + "here!!!!!!!!!!!!!!!!!"); */
                 page.outerHTML = `${data}`;
+
+                //****************************************************************** Rendering Data To a Card Display (Note - this is chaining after cchaining fetch reqs!!!!!!) ******************************************************************
+                //(1). ALL USERS CODE - ADMIN PAGE
+                let allusersDiv = document.querySelector("#alluserContDiv");
+                if (allusersDiv === null) {
+                  console.log("USER DISPLAY DIV IS ABSENT - CLIENT CODE ERROR");
+                } else {
+                  console.log("USER DISPLAY DIV");
+                }
               });
           } else if (data.adminPg === false) {
             console.log("user page");
@@ -97,8 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((response) => response.text())
               .then((data) => {
                 let page = document.querySelector("main");
-                console.log("here!!!!!!!!!!!!!!!!!");
-                console.log(data + "here!!!!!!!!!!!!!!!!!");
                 page.outerHTML = `${data}`;
               });
           } else {
@@ -141,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  //(1)creating an account, (2)receiving jw token & (3)storing it in localstorage
+  //...............................................(1)creating an account, (2)receiving jw token & (3)storing it in localstorage...............................................
   function crtAccount() {
     const emailField = document.getElementById("emailField").value;
     const passwordField = document.getElementById("passwordField").value;

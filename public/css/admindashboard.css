@@ -91,3 +91,646 @@ h2 {
     flex: 1 1 100%;
   }
 }
+
+/* settings page */
+
+.stg-settings-bars {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  font-family: "Segoe UI", sans-serif;
+  justify-content: center;
+}
+
+.stg-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 48%; /* half screen on large */
+  background-color: #1e1e1e;
+  color: #eee;
+  border-radius: 8px;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.stg-bar:hover {
+  background-color: #2c2c2c;
+}
+
+.stg-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stg-icon {
+  font-size: 22px;
+  color: #ccc;
+}
+
+.stg-label {
+  font-size: 16px;
+  color: #f5f5f5;
+}
+
+.stg-toggle {
+  padding: 3px 14px;
+  background-color: #666;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.stg-toggle.ON {
+  background-color: #000;
+}
+
+/* Medium screens: full width */
+@media screen and (max-width: 768px) {
+  .stg-bar {
+    width: 100%;
+  }
+
+  .stg-label {
+    font-size: 15px;
+  }
+
+  .stg-toggle {
+    font-size: 13px;
+  }
+}
+
+/* Small screens: stacked layout */
+@media screen and (max-width: 480px) {
+  .stg-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stg-left {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .stg-label {
+    font-size: 14px;
+  }
+
+  .stg-toggle {
+    margin-top: 8px;
+    align-self: flex-end;
+    font-size: 13px;
+  }
+}
+
+/* all users */
+.usrBr-user-bars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.usrBr-bar {
+  width: 48%;
+  background-color: #1c1c1c;
+  color: #fff;
+  border-radius: 8px;
+  padding: 15px 14px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.usrBr-bar:hover {
+  background-color: #333;
+}
+
+.usrBr-label {
+  font-size: 15px;
+}
+
+/* Popup Styling */
+.usrBr-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.usrBr-popup-content {
+  background-color: #343434;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: #fff;
+}
+
+.usrBr-image-box {
+  background-color: #000;
+  padding: 10px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.usrBr-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.usrBr-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #bbb9b9;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .usrBr-bar {
+    width: 100%;
+  }
+}
+
+/* user roles page */
+.usrrlr-role-bars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.usrrlr-bar {
+  width: 48%;
+  background-color: #1d1d1d;
+  color: #f0f0f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.usrrlr-bar:hover {
+  background-color: #2b2b2b;
+}
+
+.usrrlr-label {
+  font-size: 15px;
+}
+
+/* Popup */
+.usrrlr-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.usrrlr-popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+}
+
+.usrrlr-image-box {
+  background-color: #000;
+  padding: 10px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.usrrlr-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.usrrlr-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Mini Settings Bars */
+.minisurrlr-bars {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minisurrlr-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.minisurrlr-label {
+  font-size: 14px;
+}
+
+.minisurrlr-toggle {
+  padding: 4px 10px;
+  font-size: 12px;
+  background-color: #666;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.minisurrlr-toggle.ON {
+  background-color: #000;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .usrrlr-bar {
+    width: 100%;
+  }
+}
+
+/* new user page */
+/* New User Bars */
+.usrnewBr-user-bars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.usrnewBr-bar {
+  width: 48%;
+  background-color: #1c1c1c;
+  color: #fff;
+  border-radius: 8px;
+  padding: 15px 14px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.usrnewBr-bar:hover {
+  background-color: #333;
+}
+
+.usrnewBr-label {
+  font-size: 15px;
+}
+
+/* Popup Styling */
+.usrnewBr-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.usrnewBr-popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+}
+
+.usrnewBr-image-box {
+  background-color: #000;
+  padding: 10px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.usrnewBr-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.usrnewBr-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* reading book page */
+.bookBasic-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.bookBasic-cover {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.bookBasic-img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bookBasic-content {
+  margin-bottom: 32px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.bookBasic-author {
+  background-color: rgb(79, 78, 78);
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.bookBasic-author h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* updating?uploaind boo page */
+
+.bookUpload-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgb(42, 42, 42);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bookUpload-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.bookUpload-form input,
+.bookUpload-form select,
+.bookUpload-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Fix textarea behavior */
+.bookUpload-form textarea {
+  resize: none;
+  overflow-y: auto;
+  height: auto;
+}
+
+/* Button styling */
+.bookUpload-form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bookUpload-form button:hover {
+  background-color: #444;
+}
+
+/* Upload status message */
+.bookUpload-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgb(33, 33, 33); /* dark background */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  font-family: "Segoe UI", sans-serif;
+  color: #f0f0f0;
+}
+
+.bookUpload-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.bookUpload-form input,
+.bookUpload-form select,
+.bookUpload-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #444; /* input background */
+  color: #f5f5f5;
+}
+
+/* Textarea fix: no resizing, auto height */
+.bookUpload-form textarea {
+  resize: none;
+  overflow-y: auto;
+  height: auto;
+}
+
+/* Submit button */
+.bookUpload-form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.bookUpload-form button:hover {
+  background-color: #ddd;
+}
+
+/* Upload status message */
+#uploadStatus {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #66ff66;
+}
+
+/* Image upload section */
+.bookUpload-image {
+  display: block;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.bookUpload-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #3a3a3a;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px dotted #999; /* dotted border */
+  transition: background-color 0.3s ease;
+}
+
+.bookUpload-image-box:hover {
+  background-color: #555;
+}
+
+.bookUpload-image-icon {
+  font-size: 20px;
+  color: #eee;
+}
+
+.bookUpload-image-label {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/*.................................................... all avaliable books - mostly for registeted ones in db not s3.......................................... */
+
+.allbk-book-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  background-color: rgb(33, 33, 33);
+  padding: 24px;
+}
+
+.allbk-book-card {
+  background-color: #2b2b2b;
+  color: #fff;
+  width: 220px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.allbk-book-card:hover {
+  transform: translateY(-4px);
+}
+
+.allbk-book-thumb {
+  height: 140px;
+  background-color: #444;
+  overflow: hidden;
+}
+
+.allbk-book-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.allbk-book-body {
+  padding: 12px;
+  flex-grow: 1;
+}
+
+.allbk-book-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.allbk-book-author {
+  font-size: 12px;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+.allbk-book-action {
+  background-color: #f0f0f0;
+  color: #222;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.allbk-book-action:hover {
+  background-color: #ddd;
+}
+
+/* ..........................................................all avaliable books - mostly for registeted ones in db not s3 */

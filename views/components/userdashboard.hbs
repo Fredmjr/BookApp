@@ -1,33 +1,41 @@
-<div>
-  <div id="card-section">
-    <div class="container">
-      <div class="card" id="alluserBtn" onclick="showPanel('create')">
-        Create</div>
-      <div class="card" onclick="showPanel('user-activity')">User Activity</div>
-      <div class="card" onclick="showPanel('profile')">Profile</div>
-      <div
-        class="card"
-        onclick="showPanel('subscriptionsPayments')"
-      >Subscriptions & Payments</div>
+<main>
+  <div>
+    <div id="usr-card-section">
+      <div class="usr-section-title"> User View Section</div>
+      <div class="usr-container">
+        <div
+          class="usr-card"
+          id="usr-alluserBtn"
+          onclick="usrshowPanel('usr-all-users')"
+        >All Users</div>
+        <div class="usr-card" onclick="usrshowPanel('usr-user-content')">User
+          Content View</div>
+        <div class="usr-card" onclick="usrshowPanel('usr-user-roles')">User
+          Roles</div>
+        <div class="usr-card" onclick="usrshowPanel('usr-new-users')">New Users</div>
+      </div>
+
+    </div>
+
+    <!-- Content Panels -->
+    <div id="usr-all-users" class="usr-content-panel">
+      <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
+      <h2>All Users</h2><div>
+        <div></div>
+      </div>
+    </div>
+    <div id="usr-user-content" class="usr-content-panel">
+      <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
+      <h2>User Content View</h2>
+      <div>ggggg</div>
+    </div>
+    <div id="usr-user-roles" class="usr-content-panel">
+      <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
+      <h2>User Roles</h2>
+    </div>
+    <div id="usr-new-users" class="usr-content-panel">
+      <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
+      <h2>New Users</h2>
     </div>
   </div>
-
-  <!-- Content Panels -->
-  <div id="createDiv" class="content-panel"><button
-      class="close-btn"
-      onclick="hidePanel()"
-    >×</button><h2>Create</h2></div>
-  <div id="useractivityDiv" class="content-panel"><button
-      class="close-btn"
-      onclick="hidePanel()"
-    >×</button><h2>User Activity</h2>
-  </div>
-  <div id="profileDiv" class="content-panel"><button
-      class="close-btn"
-      onclick="hidePanel()"
-    >×</button><h2>Profile</h2></div>
-  <div id="subscriptionspaymentsDiv" class="content-panel"><button
-      class="close-btn"
-      onclick="hidePanel()"
-    >×</button><h2>Subscriptions & Payments</h2></div>
-</div>
+</main>

@@ -23,28 +23,217 @@
     </div>
 
     <!-- Content Panels -->
+    {{! ................................all users.................... }}
     <div id="all-users" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>All Users
-
-        <div>
-
+      >×</button>
+      <h4>All Users</h4>
+      <div id="alluserContDiv">
+        <div class="usrBr-user-bars">
+          <div class="usrBr-bar" onclick="usrBrShowPopup(this)">
+            <span class="usrBr-label">User Profile 1</span>
+          </div>
+          <div class="usrBr-bar" onclick="usrBrShowPopup(this)">
+            <span class="usrBr-label">User Profile 2</span>
+          </div>
+          <div class="usrBr-bar" onclick="usrBrShowPopup(this)">
+            <span class="usrBr-label">User Profile 3</span>
+          </div>
+          <!-- Popup Template -->
+          <div class="usrBr-popup" onclick="usrBrHidePopup(event)">
+            <div class="usrBr-popup-content">
+              <div class="usrBr-image-box">
+                <img src="#" alt="User Photo" class="usrBr-avatar" />
+              </div>
+              <div class="usrBr-info">
+                <p><strong>Name:</strong> Jane Doe</p>
+                <p><strong>Email:</strong> jane.doe@email.com</p>
+                <p><strong>Contact:</strong> +1234567890</p>
+                <p><strong>Location:</strong> Lusaka, Zambia</p>
+                <p><strong>DOB:</strong> Jan 01, 1990</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </h2></div>
+
+      </div>
+    </div>
+
+    {{! ................................User Content View.................... }}
     <div id="user-content" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>User Content View</h2>
+      >×</button><h>User Content View</h>
+      <div class="stg-settings-bars">
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">🔔</span>
+            <span class="stg-label">Enable Alerts</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">🔒</span>
+            <span class="stg-label">Privacy Guard</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">🔒</span>
+            <span class="stg-label">Privacy Guard</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">🌐</span>
+            <span class="stg-label">Network Sync</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">📁</span>
+            <span class="stg-label">Storage Cleaner</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">🧪</span>
+            <span class="stg-label">Experimental Mode</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">⚙️</span>
+            <span class="stg-label">System Optimization</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+        <div class="stg-bar">
+          <div class="stg-left">
+            <span class="stg-icon">📦</span>
+            <span class="stg-label">Cloud Sync</span>
+          </div>
+          <div class="stg-toggle" onclick="stgToggleSwitch(this)">OFF</div>
+        </div>
+      </div>
     </div>
+
+    {{! ................................User Roles.................... }}
     <div id="user-roles" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>User Roles</h2></div>
+      >×</button><h4>User Roles</h4>
+      <div>
+        <div class="usrrlr-role-bars">
+          <div class="usrrlr-bar" onclick="usrrlrShowPopup(this)">
+            <span class="usrrlr-label">Administrator</span>
+          </div>
+          <div class="usrrlr-bar" onclick="usrrlrShowPopup(this)">
+            <span class="usrrlr-label">Moderator</span>
+          </div>
+          <div class="usrrlr-bar" onclick="usrrlrShowPopup(this)">
+            <span class="usrrlr-label">Guest User</span>
+          </div>
+
+          <!-- Popup -->
+          <div class="usrrlr-popup" onclick="usrrlrHidePopup(event)">
+            <div class="usrrlr-popup-content">
+              <div class="usrrlr-image-box">
+                <img src="#" alt="User Photo" class="usrrlr-avatar" />
+              </div>
+              <div class="usrrlr-info">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Role:</strong> Administrator</p>
+                <p><strong>Email:</strong> john.doe@email.com</p>
+              </div>
+
+              <!-- Mini Settings Bars -->
+              <div class="minisurrlr-bars">
+                <div class="minisurrlr-bar">
+                  <span class="minisurrlr-label">Can Edit Content</span>
+                  <div
+                    class="minisurrlr-toggle"
+                    onclick="usrrlrToggleSwitch(this)"
+                  >OFF</div>
+                </div>
+                <div class="minisurrlr-bar">
+                  <span class="minisurrlr-label">Access Analytics</span>
+                  <div
+                    class="minisurrlr-toggle"
+                    onclick="usrrlrToggleSwitch(this)"
+                  >OFF</div>
+                </div>
+                <div class="minisurrlr-bar">
+                  <span class="minisurrlr-label">Manage Users</span>
+                  <div
+                    class="minisurrlr-toggle"
+                    onclick="usrrlrToggleSwitch(this)"
+                  >OFF</div>
+                </div>
+                <div class="minisurrlr-bar">
+                  <span class="minisurrlr-label">View Reports</span>
+                  <div
+                    class="minisurrlr-toggle"
+                    onclick="usrrlrToggleSwitch(this)"
+                  >OFF</div>
+                </div>
+                <div class="minisurrlr-bar">
+                  <span class="minisurrlr-label">Receive Alerts</span>
+                  <div
+                    class="minisurrlr-toggle"
+                    onclick="usrrlrToggleSwitch(this)"
+                  >OFF</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {{! ................................New Users.................... }}
     <div id="new-users" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>New Users</h2></div>
+      >×</button><h2>New Users</h2>
+      <div>
+        <div class="usrnewBr-user-bars">
+          <div class="usrnewBr-bar" onclick="usrnewBrShowPopup(this)">
+            <span class="usrnewBr-label">User Profile 1</span>
+          </div>
+          <div class="usrnewBr-bar" onclick="usrnewBrShowPopup(this)">
+            <span class="usrnewBr-label">User Profile 2</span>
+          </div>
+          <div class="usrnewBr-bar" onclick="usrnewBrShowPopup(this)">
+            <span class="usrnewBr-label">User Profile 3</span>
+          </div>
+
+          <!-- Popup Template -->
+          <div class="usrnewBr-popup" onclick="usrnewBrHidePopup(event)">
+            <div class="usrnewBr-popup-content">
+              <div class="usrnewBr-image-box">
+                <img src="#" alt="User Photo" class="usrnewBr-avatar" />
+              </div>
+              <div class="usrnewBr-info">
+                <p><strong>Name:</strong> Jane Doe</p>
+                <p><strong>Email:</strong> jane.doe@email.com</p>
+                <p><strong>Contact:</strong> +1234567890</p>
+                <p><strong>Location:</strong> Lusaka, Zambia</p>
+                <p><strong>DOB:</strong> Jan 01, 1990</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    {{! ................................Create Book.................... }}
     <div id="create-book" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
@@ -85,26 +274,179 @@
         </dialog>
       </div>
     </div>
+
+    {{! ................................Read Boo.................... }}
     <div id="read-book" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>Read Book</h2></div>
+      >×</button><h2>Read Book</h2>
+      <div>
+        <div class="bookBasic-container">
+          <div class="bookBasic-cover">
+            <img src="#" alt="Book Cover" class="bookBasic-img" />
+          </div>
+
+          <div class="bookBasic-content" id="bookBasic-content">
+            <!-- Book content goes here -->
+            <p>
+              “It was a bright cold day in April, and the clocks were striking
+              thirteen...”
+            </p>
+          </div>
+
+          <div class="bookBasic-author">
+            <h3>About the Author</h3>
+            <p>
+              Bookapp Authorship Bookapp is a curated reading platform designed
+              to showcase stories from emerging and established voices around
+              the world. Every book featured undergoes editorial review and is
+              presented with clean typography, intuitive navigation, and
+              immersive layouts optimized for digital reading.
+            </p>
+          </div>
+        </div>
+
+      </div></div>
+
+    {{! ...........................Update Book......................... }}
     <div id="update-book" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>Update Book</h2></div>
+      >×</button><h4>Update Book</h4>
+      <div>
+        <div class="bookUpload-container">
+          <form class="bookUpload-form" onsubmit="handleBookUpload(event)">
+            <label>
+              Title:
+              <input type="text" name="title" required />
+            </label>
+
+            <label>
+              Author:
+              <input type="text" name="author" required />
+            </label>
+
+            <label>
+              Genre:
+              <select name="genre">
+                <option>Fiction</option>
+                <option>Non-Fiction</option>
+                <option>Fantasy</option>
+                <option>Romance</option>
+                <option>Sci-Fi</option>
+                <option>Biography</option>
+              </select>
+            </label>
+
+            <label>
+              Description:
+              <textarea
+                name="description"
+                rows="5"
+                placeholder="Brief summary or notes..."
+              ></textarea>
+            </label>
+
+            <!-- Image Upload Section -->
+            <label class="bookUpload-image">
+              <input type="file" name="bookCover" accept="image/*" hidden />
+              <div class="bookUpload-image-box">
+                <span class="bookUpload-image-label">Choose Book Cover</span>
+              </div>
+            </label>
+
+            <img
+              id="bookUpload-preview"
+              src="#"
+              alt="Preview"
+              style="display: none;"
+            />
+
+            <!-- Book File Upload -->
+            <label>
+              Upload File (PDF, DOCX only EPUB):
+              <input
+                type="file"
+                name="bookfile"
+                accept=".pdf,.doc,.docx,.epub"
+                required
+              />
+            </label>
+
+            <button type="submit">Submit Book</button>
+          </form>
+
+          <div id="uploadStatus"></div>
+        </div>
+
+      </div></div>
+
+    {{! ...........................Deleted Book......................... }}
     <div id="delete-book" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>Delete Book</h2></div>
+      >×</button><h2>Delete Book</h2>
+      <div>
+        <p>im tired, i will work on this feature tomorrow</p>
+      </div>
+    </div>
+    {{! ...........................All Available Book......................... }}
     <div id="available-books" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>All Available Books</h2></div>
+      >×</button><h2>All Available Books</h2>
+      <div>
+        <div class="allbk-book-wrapper">
+          <div class="allbk-book-card">
+            <div class="allbk-book-thumb">
+              <img src="#" alt="Book Cover" class="allbk-book-img" />
+            </div>
+            <div class="allbk-book-body">
+              <h3 class="allbk-book-title">Aether Skies</h3>
+              <p class="allbk-book-author">by Nova Rhys</p>
+              <button class="allbk-book-action">Explore</button>
+            </div>
+          </div>
+
+          <div class="allbk-book-card">
+            <div class="allbk-book-thumb">
+              <img src="#" alt="Book Cover" class="allbk-book-img" />
+            </div>
+            <div class="allbk-book-body">
+              <h3 class="allbk-book-title">Beyond Binary</h3>
+              <p class="allbk-book-author">by Mira Quinn</p>
+              <button class="allbk-book-action">Explore</button>
+            </div>
+          </div>
+
+          <div class="allbk-book-card">
+            <div class="allbk-book-thumb">
+              <img src="#" alt="Book Cover" class="allbk-book-img" />
+            </div>
+            <div class="allbk-book-body">
+              <h3 class="allbk-book-title">Crimson Horizon</h3>
+              <p class="allbk-book-author">by Elias Stone</p>
+              <button class="allbk-book-action">Explore</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {{! ...........................All Deleted Books......................... }}
     <div id="deleted-books" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>All Deleted Books</h2></div>
+      >×</button><h2>All Deleted Books</h2>
+      <p>I will have to add a bokmodel for deletd books, for now only the db
+        registration model enough</p>
+      <p>in the future i wll add files from the s3</p>
+      <p>im thinking doing a backup bucket for deletd files sepcifically, yeah
+        this for future section
+      </p>
+    </div>
+
   </div>
   {{! .........................................original upload function......................................... }}
   {{!   <p>admin dashbard</p>
