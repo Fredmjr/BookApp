@@ -8,8 +8,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import sequelize from "../config/db.js";
 import { v4 as uuidv4 } from "uuid";
-import { constants } from "buffer";
-import { error } from "console";
 
 const fileUuid = uuidv4();
 const fields = {};
@@ -32,7 +30,7 @@ resetbookModel(); */
 
 //creating a book with tile & file res with mgs book created and an error being clg
 export const addBookHandler = async (req, res) => {
-  const busboy = new Busboy({
+  const busboy = Busboy({
     headers: req.headers,
   });
   const bukectName = "uploads";

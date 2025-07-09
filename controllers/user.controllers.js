@@ -39,10 +39,16 @@ export const createUser = async (req, res) => {
     //added this code to check if useModel is empty, if empty first user is made admin,
     // jusst two line below, if remove will still work the same but no first user admin -by fred.
     const existingUsers = await userModel.findAll();
-    const admin = existingUsers.length === 0;
-
+    let user;
+    if (existingUsers.length === 0) {
+      user = await userModel.create({
+        email: email,
+        password: hashedpassword,
+        admin: true,
+      });
+    }
     //this does need above two lines of code to create user
-    let user = await userModel.create({
+    user = await userModel.create({
       email: email,
       password: hashedpassword,
       admin,
