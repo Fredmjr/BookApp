@@ -16,6 +16,25 @@ router.get("/login", (req, res) => {
 router.get("/test", downloadUrl);
 
 //clg all the book from database
+/* router.get("/gallery", async (req, res) => {
+  let cacheKey = "books";
+  try {
+    const books = await bookModel.findAll();
+    if (!books) {
+      res.status(404).send("No books found");
+    } else {
+      res.render("components/gallery", {
+        book: books,
+      });
+      console.log("books in db");
+    }
+  } catch (error) {
+    console.log("something wrong happened while getting books");
+    console.log(error);
+  }
+}); */
+
+//original clg all books:
 router.get("/gallery", async (req, res) => {
   let cacheKey = "books";
   try {
@@ -25,21 +44,22 @@ router.get("/gallery", async (req, res) => {
       res.render("components/gallery", {
         book: JSON.parse(cached),
       });
+    } else if (!cached) {
+      const books = await bookModel.findAll();
+      if (!books) {
+        res.status(404).send("No books found");
+      }
+      let newCache = await redisClient.setEx(
+        cacheKey,
+        5,
+        JSON.stringify(books)
+      );
+      console.log("this is newcache " + newCache);
+      res.render("components/gallery", {
+        book: books,
+      });
     }
-
-    const books = await bookModel.findAll();
-    if (!books) {
-      res.status(404).send("No books found");
-    }
-    let newCache = await redisClient.setEx(
-      cacheKey,
-      60 * 5,
-      JSON.stringify(books)
-    );
-    console.log("this is newcache " + newCache);
-    res.render("components/gallery", {
-      book: books,
-    });
+    cached = null;
   } catch (error) {
     console.log("something wrong happened while getting books");
     console.log(error);

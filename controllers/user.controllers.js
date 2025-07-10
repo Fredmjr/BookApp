@@ -128,7 +128,7 @@ export const getAllusers = async (req, res) => {
     if (!allUsers) {
       res.status(404).send("No user found");
     }
-    console.log(allUsers);
+    /*     console.log(allUsers); */
     res.send(allUsers);
   } catch (error) {
     console.log("something wrong happened while getting users");
