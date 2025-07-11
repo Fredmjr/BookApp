@@ -48,12 +48,25 @@ export const createUser = async (req, res) => {
       });
     }
     //this does need above two lines of code to create user
-    user = await userModel.create({
-      email: email,
-      password: hashedpassword,
-      admin,
+    const foundUser = await userModel.findOne({
+      where: {
+        email: email,
+      },
     });
-    res.send(user);
+    if (foundUser) {
+      res.status(200).json({ acount: true });
+    } else {
+      //create & rediect to user page after creating user
+      user = await userModel.create({
+        email: email,
+        password: hashedpassword,
+      });
+
+      res.status(200).json({
+        redirect: true,
+        redirectUrl: "/user/dashboard",
+      });
+    }
   } catch (error) {
     console.log(error);
     res.send("something wrong happened while creating user");
@@ -232,3 +245,24 @@ export const deleteUser = async (req, res) =>{
 }
 
  */
+
+export const checkuserAccount = async (req, res) => {
+  const { email } = req.body;
+  try {
+    if (email) {
+      const user = await userModel.findOne({
+        where: {
+          email: email,
+        },
+      });
+      if (user) {
+        res.send(user);
+        console.log(user);
+      } else {
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.send("unable to reigister user");
+  }
+};

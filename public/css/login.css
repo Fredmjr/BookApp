@@ -4,3 +4,235 @@
   justify-content: center;
   align-items: center;
 }
+/* .........................................................Signup page..................................................................*/
+.signContainer {
+  background-color: #2c2c2c; /* Card background */
+  color: #e0e0e0; /* Text color */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  margin: 50px auto; /* Centered on the page for demonstration */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signHeader h2 {
+  margin: 0;
+  color: #e0e0e0; /* Header text color */
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.signFormGroup {
+  margin-bottom: 15px;
+}
+
+.signFormGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #e0e0e0; /* Label text color */
+}
+
+.signFormGroup input[type="text"],
+.signFormGroup input[type="email"],
+.signFormGroup input[type="password"] {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 12px 10px;
+  border: 1px solid #505050; /* Input border color */
+  border-radius: 8px;
+  background-color: #1a1a1a; /* Input background */
+  color: #e0e0e0; /* Input text color */
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signFormGroup input[type="text"]::placeholder,
+.signFormGroup input[type="email"]::placeholder,
+.signFormGroup input[type="password"]::placeholder {
+  color: #a0a0a0; /* Placeholder color */
+}
+
+.signFormGroup input[type="text"]:focus,
+.signFormGroup input[type="email"]:focus,
+.signFormGroup input[type="password"]:focus {
+  border-color: #6a5acd; /* Purple for focus border */
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.4); /* Focus glow */
+  outline: none;
+}
+
+.signRegisterBtn {
+  /* Updated class name */
+  width: 92%;
+  padding: 12px 20px;
+  background-color: #6a5acd; /* Button background */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  box-sizing: border-box; /* Added to ensure padding is included in the width */
+}
+
+.signRegisterBtn:hover {
+  background-color: #7b68ee; /* Button hover background */
+  transform: translateY(-2px);
+}
+
+.signRegisterBtn:active {
+  transform: translateY(0);
+}
+
+.signFooter {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.signFooter p {
+  margin: 0;
+}
+
+.signLink {
+  color: #8a2be2; /* Link color (BlueViolet) */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signLink:hover {
+  color: #9370db; /* Link hover color (MediumPurple) */
+  text-decoration: underline;
+}
+
+/* .....................................................................................Login Page................................................................................... */
+.logContainer {
+  background-color: #2c2c2c; /* Card background */
+  color: #e0e0e0; /* Text color */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  margin: 50px auto; /* Centered on the page for demonstration */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.logHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logHeader h2 {
+  margin: 0;
+  color: #e0e0e0; /* Header text color */
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.logFormGroup {
+  margin-bottom: 15px;
+}
+
+.logFormGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #e0e0e0; /* Label text color */
+}
+
+.logFormGroup input[type="text"],
+.logFormGroup input[type="email"],
+.logFormGroup input[type="password"] {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 12px 10px;
+  border: 1px solid #505050; /* Input border color */
+  border-radius: 8px;
+  background-color: #1a1a1a; /* Input background */
+  color: #e0e0e0; /* Input text color */
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
+.logFormGroup input[type="text"]::placeholder,
+.logFormGroup input[type="email"]::placeholder,
+.logFormGroup input[type="password"]::placeholder {
+  color: #a0a0a0; /* Placeholder color */
+}
+
+.logFormGroup input[type="text"]:focus,
+.logFormGroup input[type="email"]:focus,
+.logFormGroup input[type="password"]:focus {
+  border-color: #6a5acd; /* Purple for focus border */
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.4); /* Focus glow */
+  outline: none;
+}
+
+.logLoginBtn {
+  /* Class for the login button */
+  width: 92%;
+  padding: 12px 20px;
+  background-color: #6a5acd; /* Button background */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  box-sizing: border-box; /* Added to ensure padding is included in the width */
+}
+
+.logLoginBtn:hover {
+  background-color: #7b68ee; /* Button hover background */
+  transform: translateY(-2px);
+}
+
+.logLoginBtn:active {
+  transform: translateY(0);
+}
+
+.logFooter {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.logFooter p {
+  margin: 0;
+  line-height: 1.6; /* Spacing for multiple links */
+}
+
+.logLink {
+  color: #8a2be2; /* Link color (BlueViolet) */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.logLink:hover {
+  color: #9370db; /* Link hover color (MediumPurple) */
+  text-decoration: underline;
+}
+
+#accoungMgs {
+  color: rgb(254, 70, 70);
+  margin: 5px;
+}

@@ -1,58 +1,85 @@
-<div id="logsPages">
-  <div id="loginPage">
-    <form action="">
-      <fieldset>
-        <legend>Fill all fields</legend>
-        <div class="field border label">
-          <input id="emailInput" type="email" />
-          <label>Email</label>
-        </div>
-        <div class="field border label">
-          <input id="passwordInput" type="password" />
-          <label aria-required="">Password</label>
-        </div>
-      </fieldset>
-    </form>
-    <br />
-    <div
-      id="signupPanel"
-      style="border: 1px solid #ffffff47; display: flex; padding: 10px; border-radius:5px; justify-content: center; align-items: center;"
-    >
-      <button
-        id="submitButton"
-        class="rounded"
-        onclick="authen()"
-      >Submit</button>
-      <button id="signupLoginBtn" class="rounded">Sing up!</button>
-    </div>
+{{! ................................................................Login page.................................... }}
+<div class="logContainer" id="viewloginPage">
+  <div class="logHeader">
+    <h2>Login</h2>
   </div>
-  <div
-    id="signupMgs"
-    style="display: none; border: 1px solid #ffffff47; padding: 10px; border-radius:5px;"
-  >
-    <div style="display: flex; justify-content: center; align-items: center;">
-      <p>No Account with such credentials was found!</p>
-      <button id="crdialSignuptBtn" class="rounded">Sign up!</button>
-    </div>
-
+  <div class="logFormGroup">
+    <label>Username or Email</label>
+    <input
+      type="text"
+      id="emailInput"
+      name="logUsername"
+      placeholder="Enter your username or email"
+    />
   </div>
-  <div id="signUpPage" style="display: none;">
-    <form action="">
-      <fieldset>
-        <legend>Fill all fields</legend>
-        <div class="field border label">
-          <input id="emailField" />
-          <label>Email</label>
-        </div>
-        <div class="field border label">
-          <input id="passwordField" />
-          <label>Password</label>
-        </div>
-      </fieldset>
-    </form>
-    <br />
-    <button onclick="crtAccount()" class="rounded">submit</button>
+  <div class="logFormGroup">
+    <label>Password</label>
+    <input
+      type="password"
+      id="passwordInput"
+      name="logPassword"
+      placeholder="Enter your password"
+    />
+  </div>
+  <button
+    type="submit"
+    class="logLoginBtn"
+    id="submitButton"
+    onclick="authen()"
+  >Login</button>
+  <div class="logFooter">
+    <p>Don't have an account?
+      <a href="#" class="logLink" onclick="sigupPageFuc()">Sign Up</a></p>
+    <p><a href="#" class="logLink">Forgot Password?</a></p>
   </div>
 </div>
 
-<script src="./js/login.js"></script>
+{{! ...............................................................Signup Page...................................................... }}
+
+<div id="viewSiguppage" style="display: none;">
+  <div class="signContainer">
+    <div class="signHeader">
+      <h2>Sign Up</h2>
+    </div>
+    <div class="signFormGroup">
+      <label>Email</label>
+      <input
+        type="email"
+        id="signEmailInput"
+        name="signEmail"
+        placeholder="Enter your email"
+      />
+    </div>
+    <div class="signFormGroup">
+      <label>Password</label>
+      <input
+        type="password"
+        id="signPasswordInput"
+        name="signPassword"
+        placeholder="Create a password"
+      />
+    </div>
+    <div class="signFormGroup">
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        id="confSignPasswordInput"
+        name="signConfirmPassword"
+        placeholder="Confirm your password"
+      />
+    </div>
+    <span id="accoungMgs"></span>
+    <button
+      type="submit"
+      class="signRegisterBtn"
+      onclick="registerNewuserFunc()"
+    >Register</button>
+    <div class="signFooter">
+      <p>Already have an account?
+        <a href="#" class="signLink" onclick="backtoLoginFuc()">Log In</a></p>
+    </div>
+  </div>
+
+</div>
+{{! Not sure but this script can come in hand when do undefined or null dor doc.query }}
+{{! <script src="./js/login.js"></script> }}

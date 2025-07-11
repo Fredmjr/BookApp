@@ -44,8 +44,9 @@ bookContFunc = async () => {
           Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
         },
       })
-        .then((response) => response.json())
+        .then((response) => response.text())
         .then((book) => {
+          console.log(book);
           const prevDiv = document.createElement("div");
           prevDiv.innerHTML = `
           <div class="view-book-container">

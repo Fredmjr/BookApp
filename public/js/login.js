@@ -208,3 +208,90 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }); */
 });
+
+/* ...........................................Show Signup Page........................... */
+function sigupPageFuc() {
+  const viewloginPage = document.getElementById("viewloginPage");
+  const viewSiguppage = document.getElementById("viewSiguppage");
+  viewSiguppage.style.display = "block";
+  viewloginPage.style.display = "none";
+}
+
+/* ...........................................Show to Login Page........................... */
+function backtoLoginFuc() {
+  const viewloginPage = document.getElementById("viewloginPage");
+  const viewSiguppage = document.getElementById("viewSiguppage");
+  viewSiguppage.style.display = "none";
+  viewloginPage.style.display = "block";
+}
+
+/* ...........................................Register new user........................... */
+function registerNewuserFunc() {
+  const accoungMgs = document.getElementById("accoungMgs");
+  const signEmailInput = document.getElementById("signEmailInput");
+  const signPasswordInput = document.getElementById("signPasswordInput");
+  const confSignPasswordInput = document.getElementById(
+    "confSignPasswordInput"
+  );
+
+  let value1 = signEmailInput.value;
+  let value2 = signPasswordInput.value;
+  let value3 = confSignPasswordInput.value;
+
+  if (!value1 || !value2 || !value3) {
+    alert("Please fill all fields");
+    return;
+  } else {
+    /* credentail checks */
+    if (value2 !== value3) {
+      setTimeout(() => {
+        accoungMgs.innerText = "Password doesn't match!";
+        setTimeout(() => {
+          accoungMgs.innerText = "";
+        }, 1500);
+      }, 300);
+    } else {
+      let clientalData = {
+        email: value1,
+        password: value2,
+      };
+
+      fetch("/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(clientalData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          /* repsonse or passsowrd not matched & user account exists */
+          if (data.acount === true) {
+            setTimeout(() => {
+              accoungMgs.innerText = "User with provided credentials exists";
+              setTimeout(() => {
+                accoungMgs.innerText = "";
+              }, 1500);
+            }, 300);
+          }
+
+          /* rediect the clien to userdash board after account registration */
+          if (data.redirect === true) {
+            fetch("/user/dashboard", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                /*Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, */ //we have no bearer token for this.
+              },
+            })
+              .then((response) => response.text())
+              .then((data) => {
+                let page = document.querySelector("main");
+                page.outerHTML = `${data}`;
+              });
+          }
+        });
+    }
+  }
+}

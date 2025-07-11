@@ -1,5 +1,7 @@
 //.............................FOR REUSABLE CODE..........................................
 //neccessary ones only
+
+//...............................................................id br brah.....................
 //1.gets id from data-id dataset.
 //2. makes fetch req based on that id with a stored jwtToken
 //3. mappeds quered data or book to the innerhtml of a selected div.

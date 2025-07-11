@@ -6,6 +6,7 @@ import {
   getAllusers,
   uploads,
   downloadFile,
+  checkuserAccount,
 } from "../controllers/user.controllers.js";
 
 const router = express.Router();
@@ -22,4 +23,5 @@ router.get("/dashboard", (req, res) => {
 router.post("/uploads", uploads);
 router.get("/allusers", getAllusers);
 router.get("/downloadfile", downloadFile);
+router.post("/account", checkuserAccount);
 export default router;

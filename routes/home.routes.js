@@ -38,13 +38,15 @@ router.get("/test", downloadUrl);
 router.get("/gallery", async (req, res) => {
   let cacheKey = "books";
   try {
-    const cached = await redisClient.get(cacheKey);
-    if (cached) {
-      console.log("this is cached content " + cached);
+    if (await redisClient.get(cacheKey)) {
+      console.log(
+        "this is cached content " + (await redisClient.get(cacheKey))
+      );
       res.render("components/gallery", {
-        book: JSON.parse(cached),
+        book: JSON.parse(await redisClient.get(cacheKey)),
       });
-    } else if (!cached) {
+      /*       cached = null; */
+    } else if ((await redisClient.get(cacheKey)) == null) {
       const books = await bookModel.findAll();
       if (!books) {
         res.status(404).send("No books found");
@@ -59,7 +61,6 @@ router.get("/gallery", async (req, res) => {
         book: books,
       });
     }
-    cached = null;
   } catch (error) {
     console.log("something wrong happened while getting books");
     console.log(error);
