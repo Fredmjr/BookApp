@@ -1,0 +1,6 @@
+........ONLY FIVE COLORS
+bright: brown
+light: wheat
+main: ?
+grey: #333333
+dark: ?

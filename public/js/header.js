@@ -1,7 +1,22 @@
-//opening and closing drawer - helpai
+//.......................................opening and closing drawer - helpai.....................................................
 const menuButton = document.getElementById("menuButton");
 const sideDrawer = document.getElementById("sideDrawer");
 const logoutBtn = document.getElementById("logoutBtn");
+
+//..................................................Login & home Swap page...........................................................................
+function swapLoginFuc() {
+  fetch("/ui/loginpage", {
+    method: "GET",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      let galleryCont = document.getElementById("galleryCont");
+      galleryCont.innerHTML = data;
+    });
+}
 
 function toggleDrawer() {
   sideDrawer.classList.toggle("open");
@@ -22,7 +37,7 @@ drawerLinks.forEach((link) => {
   });
 });
 
-//logout  function
+//...............................................................logout  function.......................................................................
 function log() {}
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem(`${"jwtToken"}`);

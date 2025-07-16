@@ -518,3 +518,30 @@ export const queryfileImage = async (req, res) => {
     console.log(error);
   }
 };
+
+/* ...................................................... landing page searched books............................................................................................... */
+export const searchedBook = async (req, res) => {
+  let { searchtitle } = req.body;
+  if (searchtitle === "") {
+    res.json({
+      searchempty: true,
+    });
+  }
+
+  const book = await bookModel.findAll({
+    where: {
+      title: searchtitle,
+    },
+  });
+
+  if (book.length === 0) {
+    res.json({
+      empty: true,
+    });
+  } else {
+    res.json({
+      display: true,
+      book: book,
+    });
+  }
+};

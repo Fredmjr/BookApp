@@ -83,10 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
             })
               .then((response) => response.text())
               .then((data) => {
-                let page = document.querySelector("main");
+                /* let page = document.querySelector("main");
+                page.outerHTML = `${data}`;                 */
+
                 /*                 console.log("here!!!!!!!!!!!!!!!!!");
                 console.log(data + "here!!!!!!!!!!!!!!!!!"); */
-                page.outerHTML = `${data}`;
+                let page = document.querySelector("#galleryCont");
+                page.innerHTML = `${data}`;
 
                 //****************************************************************** Rendering Data To a Card Display (Note - this is chaining after cchaining fetch reqs!!!!!!) ******************************************************************
                 //(1). ALL USERS CODE - ADMIN PAGE
@@ -108,8 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
             })
               .then((response) => response.text())
               .then((data) => {
-                let page = document.querySelector("main");
-                page.outerHTML = `${data}`;
+                let page = document.querySelector("#galleryCont");
+                page.innerHTML = `${data}`;
               });
           } else {
             console.log(

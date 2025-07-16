@@ -1,10 +1,21 @@
 import express from "express";
 import { homeHandler } from "../controllers/home.controllers.js";
 import bookModel from "../models/book.model.js";
-import { downloadUrl } from "../controllers/book.controllers.js";
+import { downloadUrl, searchedBook } from "../controllers/book.controllers.js";
 import { redisClient } from "../config/cache.js";
+//send html file path,fileurlpath,dirname then   res.sendFile(path.join(__dirname, "..", "views/components", "login.hbs"));
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const router = express.Router();
+
+router.get("/loginpage", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "views/components", "login.hbs"));
+});
 
 router.get("/home", (req, res) => {
   res.render("index.hbs");
@@ -36,30 +47,22 @@ router.get("/test", downloadUrl);
 
 //original clg all books:
 router.get("/gallery", async (req, res) => {
-  let cacheKey = "books";
+  const cacheKey = "books";
   try {
-    if (await redisClient.get(cacheKey)) {
-      console.log(
-        "this is cached content " + (await redisClient.get(cacheKey))
-      );
-      res.render("components/gallery", {
-        book: JSON.parse(await redisClient.get(cacheKey)),
-      });
-      /*       cached = null; */
-    } else if ((await redisClient.get(cacheKey)) == null) {
+    const cached = await redisClient.get(cacheKey);
+    if (cached) {
+      /*       res.render("components/gallery", {
+        book: JSON.parse(cached),
+      }); */
+      let parseCached = JSON.parse(cached);
+      res.send(parseCached);
+    } else {
       const books = await bookModel.findAll();
       if (!books) {
-        res.status(404).send("No books found");
+        return res.status(404).send(" No books found");
       }
-      let newCache = await redisClient.setEx(
-        cacheKey,
-        5,
-        JSON.stringify(books)
-      );
-      console.log("this is newcache " + newCache);
-      res.render("components/gallery", {
-        book: books,
-      });
+      await redisClient.setEx(cacheKey, 5, JSON.stringify(books));
+      res.send(books);
     }
   } catch (error) {
     console.log("something wrong happened while getting books");
@@ -90,5 +93,6 @@ router.get("/editpage", (req, res) => {
 router.get("/userpage", (req, res) => {
   res.render("userpage");
 });
+router.post("/search", searchedBook);
 
 export default router;

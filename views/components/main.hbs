@@ -1,3 +1,56 @@
-<main id="mainId" hx-get="/ui/gallery" hx-swap="innerHTML" hx-trigger="load">
+{{!........................................................ Books rendwered by HX  }}
+{{! <main id="mainId" hx-get="/ui/gallery" hx-swap="innerHTML" hx-trigger="load">
+</main> }}
 
-</main>
+{{!........................................................ Books rendwered by HX  }}
+<div id="galleryCont">
+  {{! search bar }}
+  <div id="search_bar">
+    <div id="sortbyContainer">
+      <select id="sortBy" id="">
+        <option class="optionClass" value="date-asc">sort by date</option>
+        <option class="optionClass" value="date-asc">sort by time</option>
+        <option class="optionClass" value="date-asc">sort by author</option>
+        <option class="optionClass" value="date-asc">sort by color</option>
+        <option class="optionClass" value="date-asc">sort by ebook</option>
+      </select>
+    </div>
+    <div id="search"><input
+        id="searchInput"
+        type="text"
+        placeholder="search book"
+      /></div>
+    <button id="searchBtn">search</button>
+  </div>
+  {{! home page books section }}
+  <div id="bookGallery">
+    <div id="defaultBooks">
+      <div class="homeBookCard">
+        <div class="homeBookImageContainer">
+          <img
+            src="/imgs/bookexamplecover.png"
+            alt="Book Cover Background Blur"
+            class="homeBookCoverBlur"
+          />
+          <img
+            class="bookcoverMainimg"
+            src="/imgs/bookexamplecover.png"
+            alt="bookcoverMainimg"
+          />
+          {{!  <img
+            src="/imgs/bookexamplecover.png"
+            alt="Book Cover Foreground"
+            class="homeBookCoverForeground"
+          /> }}
+        </div>
+        <div class="homeBookDetails">
+          <h3 class="homeBookTitle">Silent Pages</h3>
+          <p class="homeBookAuthor">By Eleanor Vance</p>
+          <p class="homeBookDescription">A minimalist exploration into the quiet
+            narratives hidden between the lines of everyday life.</p>
+          <button class="homeReadMoreBtn">Read Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

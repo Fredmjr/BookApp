@@ -25,9 +25,11 @@
     <button
       id="loginIcon"
       class="circle transparent"
-      hx-get="/ui/login"
+      {{! this works with hx main component, just turn off  onclick="swapLoginFuc()" and uncomment <main></main> in main.hbs}}
+      {{!       hx-get="/ui/login"
       hx-swap="innerHTML"
-      hx-target="main"
+      hx-target="main" }}
+      onclick="swapLoginFuc()"
     >
       <i>person</i>
     </button>

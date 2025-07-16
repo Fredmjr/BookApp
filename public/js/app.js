@@ -1,3 +1,39 @@
+/* ........................................ Home page Search books........................................ */
+searchBtn.addEventListener("click", () => {
+  const searchBtn = document.querySelector("#searchBtn");
+  const bookGallery = document.querySelector("#bookGallery");
+  const searchInput = document.querySelector("#searchInput").value;
+
+  const data = {
+    searchtitle: searchInput,
+  };
+
+  fetch(`ui/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.searchempty === true) {
+        /* ............................ Empty search................................... */
+        bookGallery.innerHTML = "search is empty";
+      } else if (data.display === true) {
+        /* ............................ Searched book found................................... */
+
+        bookGallery.innerHTML = `<p>${data.book[0].dataValues}</>`;
+        console.log(data);
+      } else if (data.empty === true) {
+        /* ............................ No book found................................... */
+        bookGallery.innerHTML = "No book found!";
+      }
+    })
+    .catch((error) => console.error("Error displaying file:", error));
+});
+
 /* 
 const loginIcon = document.getElementById('loginIcon');
 const header = document.getElementById('header');
@@ -26,13 +62,73 @@ document.addEventListener('click', (event)=>{
     });
 }; */
 
+/* ......................hold on this func use it for normal book gallery render................................. */
+function galleryFunc() {
+  fetch("/ui/gallery", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((books) => {
+      books.forEach((book) => {
+        const prevDiv = document.createElement("div");
+        prevDiv.innerHTML = `
+      <div class="homeBookCard">
+        <div class="homeBookImageContainer">
+          <img
+            src="/imgs/bookexamplecover.png"
+            alt="Book Cover Background Blur"
+            class="homeBookCoverBlur"
+          />
+          <img
+            class="bookcoverMainimg"
+            src="/imgs/bookexamplecover.png"
+            alt="bookcoverMainimg"
+          />
+
+        </div>
+        <div class="homeBookDetails">
+          <h3 class="homeBookTitle">${book.title}</h3>
+          <p class="homeBookAuthor">By Eleanor Vance</p>
+          <p class="homeBookAuthor">Book id:${book.id}</p>
+          <p class="homeBookDescription">A minimalist exploration into the quiet
+            narratives hidden between the lines of everyday life.</p>
+          <button class="homeReadMoreBtn" data-id="${book.id}">Read Book</button>
+        </div>
+      </div>
+    `;
+        let page = document.querySelector("#bookGallery");
+        let defaultBooks = document.querySelector("#defaultBooks");
+        /* console.log(data); */
+        /*    page.appendChild(prevDiv.firstElementChild); */
+        if (page.innerHTML !== "") {
+          defaultBooks.style.display = "none";
+          page.style.display = "flex";
+          page.style.flexWrap = "wrap";
+          page.style.alignItems = "center";
+          page.style.justifyContent = "center";
+          page.style.gap = "10px";
+          page.appendChild(prevDiv.firstElementChild);
+          bookContFunc();
+        } else {
+          console.log("empty");
+        }
+      });
+    });
+}
+
+galleryFunc();
+
+/* ............................................................................BOOK CONTENTS.................................................................................................................. */
 bookContFunc = async () => {
   //............................................id collection from dataset attribute (data-id)..........................................................................
-  const buttons = document.querySelectorAll(".book-card");
+  const buttons = document.querySelectorAll(".homeReadMoreBtn");
   buttons.forEach((button) => {
-    const id = button.dataset.id;
-
     button.addEventListener("click", () => {
+      const id = button.dataset.id;
       console.log("Book ID clicked:", id);
       //for each on top
 
@@ -44,9 +140,8 @@ bookContFunc = async () => {
           Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
         },
       })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((book) => {
-          console.log(book);
           const prevDiv = document.createElement("div");
           prevDiv.innerHTML = `
           <div class="view-book-container">
@@ -82,7 +177,7 @@ bookContFunc = async () => {
           
           `;
           /* document.body.appendChild(prevDiv); */
-          let page = document.querySelector("main");
+          let page = document.querySelector("#galleryCont");
           page.innerHTML = prevDiv.innerHTML;
 
           //..........................getting displayable file from s3 no db involved (just s3 to client)......................
