@@ -17,6 +17,7 @@ import {
   contentviewpage,
   queryfileImage,
 } from "../controllers/book.controllers.js";
+import { testingJWT } from "../controllers/user.controllers.js";
 
 const router = express.Router();
 router.post(
@@ -34,6 +35,7 @@ router.get("/queryinfo/:id", queryInfo);
 router.get("/downloadquery/:id", dlQfile);
 router.get("/readfile/:name", readFile);
 router.delete("/deletebookdata/:name", deleteBookdata);
+router.get("/jwtest", testingJWT);
 /* router.patch("/updatebookdata/:name", updateBookdata); */
 router.post("/createbucket", createS3Bucket);
 router.delete("/deletebucket", deleteS3Bucket);

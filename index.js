@@ -6,7 +6,7 @@ import homeRouter from "./routes/home.routes.js";
 import userRouter from "./routes/user.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import dotenv from "dotenv";
-import authorization from "./middleware/authorization.js";
+import { authorization } from "./middleware/authorization.js";
 import { expressjwt } from "express-jwt";
 import hbs from "hbs";
 import minioClient from "./config/storage.js";
@@ -28,12 +28,15 @@ app.use(express.json());
 
 app.use("/ui", homeRouter);
 app.use("/user", userRouter);
-app.use(
+
+//authorizations method 1 -  expressjwt
+/* app.use(
   "/admin",
   expressjwt({ secret: process.env.PRIVATE_KEY, algorithms: ["HS256"] }),
   adminRouter
-);
-app.use("/admin", authorization);
+); */
+//authorizations method 1 -  jsonwebtoken
+app.use("/admin", authorization, adminRouter);
 app.get("/", (req, res) => {
   res.render("index");
 });

@@ -88,10 +88,15 @@ export const authentication = async (req, res) => {
     });
 
     console.log(user);
+    const jwtObject = {
+      email: user[0].dataValues.email,
+      password: user[0].dataValues.password,
+      admin: user[0].dataValues.admin,
+    };
 
     if (user) {
       if (user[0].dataValues.password === newHashedpassword) {
-        let JWT = jwt.sign(JSON.stringify(user), process.env.PRIVATE_KEY);
+        let JWT = jwt.sign(JSON.stringify(jwtObject), process.env.PRIVATE_KEY);
 
         //redirecting the user to user or admin page based on the user login admin userModel state
         if (user[0].dataValues.admin === true) {
@@ -265,4 +270,9 @@ export const checkuserAccount = async (req, res) => {
     console.log(error);
     res.send("unable to reigister user");
   }
+};
+
+export const testingJWT = async (req, res) => {
+  res.send(req.Auth);
+  console.log(req.Auth);
 };

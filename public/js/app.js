@@ -1,39 +1,3 @@
-/* ........................................ Home page Search books........................................ */
-searchBtn.addEventListener("click", () => {
-  const searchBtn = document.querySelector("#searchBtn");
-  const bookGallery = document.querySelector("#bookGallery");
-  const searchInput = document.querySelector("#searchInput").value;
-
-  const data = {
-    searchtitle: searchInput,
-  };
-
-  fetch(`ui/search`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.searchempty === true) {
-        /* ............................ Empty search................................... */
-        bookGallery.innerHTML = "search is empty";
-      } else if (data.display === true) {
-        /* ............................ Searched book found................................... */
-
-        bookGallery.innerHTML = `<p>${data.book[0].dataValues}</>`;
-        console.log(data);
-      } else if (data.empty === true) {
-        /* ............................ No book found................................... */
-        bookGallery.innerHTML = "No book found!";
-      }
-    })
-    .catch((error) => console.error("Error displaying file:", error));
-});
-
 /* 
 const loginIcon = document.getElementById('loginIcon');
 const header = document.getElementById('header');
@@ -211,4 +175,52 @@ document.addEventListener("DOMContentLoaded", () => {
   addtocartFunc = async () => {
     console.log("adding to cart function");
   };
+});
+
+/* ........................................ Home page Search books........................................ */
+searchBtn.addEventListener("click", () => {
+  const searchBtn = document.querySelector("#searchBtn");
+  const bookGallery = document.querySelector("#bookGallery");
+  const searchInput = document.querySelector("#searchInput").value;
+
+  const data = {
+    searchtitle: searchInput,
+  };
+
+  fetch(`ui/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.searchempty === true) {
+        /* ............................ Empty search................................... */
+        bookGallery.innerHTML = "search is empty";
+      } else if (data.display === true) {
+        /* ............................ Searched book found................................... */
+
+        console.log(data.book);
+        let booklet = "";
+        data.book.forEach((book) => {
+          booklet += `
+          <div style="display: flex; background-color: #272626ff;  border-radius: 5px">
+          <p style="padding: 10px; display: flex; ">${book.title}</p>          
+          <p style="padding: 10px;">${book.id}</p>
+          <p style="padding: 10px;">${book.description}</p>
+          <p style="padding: 10px;"></p>          
+          </div>
+
+          `;
+        });
+        bookGallery.innerHTML = booklet;
+      } else if (data.empty === true) {
+        /* ............................ No book found................................... */
+        bookGallery.innerHTML = "No book found!";
+      }
+    })
+    .catch((error) => console.error("Error displaying file:", error));
 });
