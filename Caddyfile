@@ -1,3 +1,0 @@
-fredmusondajr.store {
-    reverse_proxy app:3000 
-}
