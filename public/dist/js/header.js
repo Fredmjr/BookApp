@@ -1,0 +1,2 @@
+var o=document.getElementById("menuButton"),n=document.getElementById("sideDrawer"),c=document.getElementById("logoutBtn");function t(){n.classList.toggle("open")}o.addEventListener("click",t);document.addEventListener("keydown",e=>{e.key==="Escape"&&n.classList.contains("open")&&t()});var l=document.querySelectorAll(".drawer-content a");l.forEach(e=>{e.addEventListener("click",()=>{t()})});c.addEventListener("click",()=>{localStorage.removeItem("jwtToken"),location.reload()});
+//# sourceMappingURL=header.js.map

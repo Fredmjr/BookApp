@@ -1,0 +1,2 @@
+var l=o=>document.querySelector(o);console.log("hello");window.createBook=function(){let o=l("#dropfilesInput").files[0],r=l("#bookTitle").value.trim(),t=new FormData;t.append("title",r),t.append("file",o),fetch("/admin/addbook",{method:"POST",headers:{Authorization:`Bearer ${localStorage.getItem("jwtToken")}`},body:t}).then(e=>e.text()).then(e=>{alert(e),console.log(e)}),document.querySelector("#bookUrl").value="",document.querySelector("#bookTitle").value=""};
+//# sourceMappingURL=addbook.js.map

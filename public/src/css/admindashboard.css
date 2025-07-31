@@ -733,3 +733,195 @@ h2 {
 }
 
 /* ..........................................................all avaliable books - mostly for registeted ones in db not s3 */
+
+/* ..........................................................create book option 2 ............................. */
+.bookdashshelter {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  margin: 0;
+}
+
+.ctl-container {
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 600px;
+}
+
+.ctl-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #cccccc;
+}
+
+.ctl-form-group input[type="text"],
+.ctl-form-group textarea,
+.ctl-form-group select {
+  width: calc(100% - 20px);
+  padding: 12px 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Styles for the book cover input to make it look like a dotted drop zone */
+#ctl-bookCover {
+  width: 100%;
+  padding: 20px; /* Increased padding for drop zone feel */
+  border: 2px dotted #888; /* Dotted border */
+  border-radius: 8px; /* Slightly more rounded corners */
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: center; /* Center the text "No file chosen" */
+  cursor: pointer; /* Indicate it's clickable */
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none; /* Remove default styling */
+}
+
+/* Hide the default file input button for book cover */
+#ctl-bookCover::-webkit-file-upload-button {
+  visibility: hidden;
+  width: 0;
+  padding: 0;
+  margin: 0;
+}
+#ctl-bookCover::before {
+  content: "Click or Drag to Upload Cover"; /* Custom text */
+  display: block;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 16px;
+}
+#ctl-bookCover:hover {
+  border-color: #007bff; /* Highlight on hover */
+}
+
+/* Styles for the main upload file input */
+#ctl-uploadFile {
+  width: 100%;
+  padding: 12px 0; /* Adjust padding for file input */
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Hide the default file input button for the main upload file */
+#ctl-uploadFile::-webkit-file-upload-button {
+  background-color: #555;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  visibility: hidden; /* Hide the button */
+  width: 0;
+  padding: 0;
+  margin: 0;
+}
+#ctl-uploadFile::before {
+  content: "Choose File"; /* Custom text for the button area */
+  display: inline-block;
+  background-color: #555;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+#ctl-uploadFile:hover::before {
+  background-color: #666;
+}
+#ctl-uploadFile:active::before {
+  background-color: #444;
+}
+
+.ctl-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.ctl-form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23f0f0f0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.ctl-form-group input[type="text"]:focus,
+.ctl-form-group textarea:focus,
+.ctl-form-group select:focus,
+.ctl-form-group input[type="file"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.ctlsubmitBn {
+  display: flex;
+  justify-content: center;
+  width: auto; /* Allow width to shrink */
+  max-width: 150px; /* Max width to keep it smaller */
+  margin: 20px auto 0 auto; /* Center the button */
+  padding: 10px 20px; /* Smaller padding */
+  background-color: brown;
+  color: wheat;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px; /* Smaller font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ctlsubmitBn:hover {
+  background-color: rgb(190, 35, 35);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ctl-container {
+    padding: 20px;
+  }
+}
+
+.ctlCoverupload {
+  border: dotted 2px wheat;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+}
+
+.ctlBookupload {
+  border: dotted 2px wheat;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+}
+.ctlCondtionlabel {
+  font-size: 10px;
+}
