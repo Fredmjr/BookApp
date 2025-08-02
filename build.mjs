@@ -18,7 +18,7 @@ function getJsFiles(dir, ext = [".js"], files = []) {
 }
 
 const entryPoints = getJsFiles(path.join(__dirname, "public", "src", "js"));
-
+console.log(entryPoints);
 build({
   entryPoints,
   outdir: "public/dist/js",
@@ -26,7 +26,6 @@ build({
   format: "esm",
   platform: "browser",
   sourcemap: true,
-  target: ["esnext"],
-
-  minify: true,
+  /* minify: true, */ //turn when minifying functions and use OOPs functions, code in OOPs folder, use screenchots as reference.
+  keepNames: true,
 }).catch(() => process.exit(1));

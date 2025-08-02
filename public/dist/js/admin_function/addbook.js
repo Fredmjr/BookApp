@@ -1,2 +1,30 @@
-var l=o=>document.querySelector(o);console.log("hello");window.createBook=function(){let o=l("#dropfilesInput").files[0],r=l("#bookTitle").value.trim(),t=new FormData;t.append("title",r),t.append("file",o),fetch("/admin/addbook",{method:"POST",headers:{Authorization:`Bearer ${localStorage.getItem("jwtToken")}`},body:t}).then(e=>e.text()).then(e=>{alert(e),console.log(e)}),document.querySelector("#bookUrl").value="",document.querySelector("#bookTitle").value=""};
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+
+// public/src/js/utiles/utilies.js
+var $ = /* @__PURE__ */ __name((elem) => {
+  return document.querySelector(elem);
+}, "$");
+
+// public/src/js/admin_function/addbook.js
+console.log("hello");
+window.createBook = function() {
+  let dropfilesInput = $("#dropfilesInput").files[0];
+  let bookTitle = $("#bookTitle").value.trim();
+  const formData = new FormData();
+  formData.append("title", bookTitle);
+  formData.append("file", dropfilesInput);
+  fetch("/admin/addbook", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+    },
+    body: formData
+  }).then((response) => response.text()).then((data) => {
+    alert(data);
+    console.log(data);
+  });
+  document.querySelector("#bookUrl").value = "";
+  document.querySelector("#bookTitle").value = "";
+};
 //# sourceMappingURL=addbook.js.map

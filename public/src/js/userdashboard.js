@@ -5,6 +5,7 @@ function usrshowPanel(id) {
   });
   document.getElementById(id).style.display = "block";
 }
+window.usrshowPanel = usrshowPanel;
 
 function usrhidePanel() {
   document.getElementById("usr-card-section").style.display = "block";

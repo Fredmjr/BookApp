@@ -1,4 +1,18 @@
-function c(){fetch("/ui/gallery",{method:"GET",headers:{"Content-Type":"application/json",Authorization:`Bearer ${localStorage.getItem("jwtToken")}`}}).then(a=>a.json()).then(a=>{a.forEach(t=>{let i=document.createElement("div");i.innerHTML=`
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+
+// public/src/js/app.js
+function galleryFunc() {
+  fetch("/ui/gallery", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+    }
+  }).then((response) => response.json()).then((books) => {
+    books.forEach((book) => {
+      const prevDiv = document.createElement("div");
+      prevDiv.innerHTML = `
       <div class="homeBookCard">
         <div class="homeBookImageContainer">
           <img
@@ -14,15 +28,49 @@ function c(){fetch("/ui/gallery",{method:"GET",headers:{"Content-Type":"applicat
 
         </div>
         <div class="homeBookDetails">
-          <h3 class="homeBookTitle">${t.title}</h3>
+          <h3 class="homeBookTitle">${book.title}</h3>
           <p class="homeBookAuthor">By Eleanor Vance</p>
-          <p class="homeBookAuthor">Book id:${t.id}</p>
+          <p class="homeBookAuthor">Book id:${book.id}</p>
           <p class="homeBookDescription">A minimalist exploration into the quiet
             narratives hidden between the lines of everyday life.</p>
-          <button class="homeReadMoreBtn" data-id="${t.id}">Read Book</button>
+          <button class="homeReadMoreBtn" data-id="${book.id}">Read Book</button>
         </div>
       </div>
-    `;let e=document.querySelector("#bookGallery"),o=document.querySelector("#defaultBooks");e.innerHTML!==""?(o.style.display="none",e.style.display="flex",e.style.flexWrap="wrap",e.style.alignItems="center",e.style.justifyContent="center",e.style.gap="10px",e.appendChild(i.firstElementChild),bookContFunc()):console.log("empty")})})}c();bookContFunc=async()=>{document.querySelectorAll(".homeReadMoreBtn").forEach(t=>{t.addEventListener("click",()=>{let i=t.dataset.id;console.log("Book ID clicked:",i),fetch(`/admin/book/${i}`,{method:"GET",headers:{"Content-Type":"application/json",Authorization:`Bearer ${localStorage.getItem("jwtToken")}`}}).then(e=>e.json()).then(e=>{let o=document.createElement("div");o.innerHTML=`
+    `;
+      let page = document.querySelector("#bookGallery");
+      let defaultBooks = document.querySelector("#defaultBooks");
+      if (page.innerHTML !== "") {
+        defaultBooks.style.display = "none";
+        page.style.display = "flex";
+        page.style.flexWrap = "wrap";
+        page.style.alignItems = "center";
+        page.style.justifyContent = "center";
+        page.style.gap = "10px";
+        page.appendChild(prevDiv.firstElementChild);
+        bookContFunc();
+      } else {
+        console.log("empty");
+      }
+    });
+  });
+}
+__name(galleryFunc, "galleryFunc");
+galleryFunc();
+bookContFunc = /* @__PURE__ */ __name(async () => {
+  const buttons = document.querySelectorAll(".homeReadMoreBtn");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.id;
+      console.log("Book ID clicked:", id);
+      fetch(`/admin/book/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+        }
+      }).then((response) => response.json()).then((book) => {
+        const prevDiv = document.createElement("div");
+        prevDiv.innerHTML = `
           <div class="view-book-container">
           <div class="view-book-left">
             <div class="view-book-cover">
@@ -31,7 +79,7 @@ function c(){fetch("/ui/gallery",{method:"GET",headers:{"Content-Type":"applicat
               </div>
           </div>
           <div class="view-book-right">
-            <h1 class="view-book-title">${e.title}</h1>
+            <h1 class="view-book-title">${book.title}</h1>
             <h2 class="view-book-author">Author Name</h2>
             <div class="vi-book-rating">
               <span>4.5/5</span>
@@ -42,7 +90,7 @@ function c(){fetch("/ui/gallery",{method:"GET",headers:{"Content-Type":"applicat
               <span class="view-book-original-price">$29.99</span>
             </div>
             <div class="view-book-description">
-              <p>${e.description}</p>
+              <p>${book.description}</p>
             </div>
             <div class="view-book-actions">
               <button onclick="buynowFunc()" class="vi-btn-buy-now">Buy Now</button>
@@ -54,13 +102,69 @@ function c(){fetch("/ui/gallery",{method:"GET",headers:{"Content-Type":"applicat
           </div>
         </div>
           
-          `;let s=document.querySelector("#galleryCont");s.innerHTML=o.innerHTML,fetch(`/admin/queryfile/${i}`,{method:"GET",headers:{Authorization:`Bearer ${localStorage.getItem("jwtToken")}`}}).then(n=>n.blob()).then(n=>{let l=URL.createObjectURL(n),r=s.querySelector(".bookimgQry");r.src=l}).catch(n=>console.error("Error displaying file:",n))})})})};document.addEventListener("DOMContentLoaded",()=>{downloadFunc=async()=>{console.log("hello world")},buynowFunc=async()=>{console.log("buying book now function")},addtocartFunc=async()=>{console.log("adding to cart function")}});searchBtn.addEventListener("click",()=>{let a=document.querySelector("#searchBtn"),t=document.querySelector("#bookGallery"),e={searchtitle:document.querySelector("#searchInput").value};fetch("ui/search",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${localStorage.getItem("jwtToken")}`},body:JSON.stringify(e)}).then(o=>o.json()).then(o=>{if(o.searchempty===!0)t.innerHTML="search is empty";else if(o.display===!0){console.log(o.book);let s="";o.book.forEach(n=>{s+=`
+          `;
+        let page = document.querySelector("#galleryCont");
+        page.innerHTML = prevDiv.innerHTML;
+        fetch(`/admin/queryfile/${id}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+          }
+        }).then((response) => response.blob()).then((blob) => {
+          const url = URL.createObjectURL(blob);
+          const bookimgQry = page.querySelector(".bookimgQry");
+          bookimgQry.src = url;
+        }).catch((error) => console.error("Error displaying file:", error));
+      });
+    });
+  });
+}, "bookContFunc");
+document.addEventListener("DOMContentLoaded", () => {
+  downloadFunc = /* @__PURE__ */ __name(async () => {
+    console.log("hello world");
+  }, "downloadFunc");
+  buynowFunc = /* @__PURE__ */ __name(async () => {
+    console.log("buying book now function");
+  }, "buynowFunc");
+  addtocartFunc = /* @__PURE__ */ __name(async () => {
+    console.log("adding to cart function");
+  }, "addtocartFunc");
+});
+searchBtn.addEventListener("click", () => {
+  const searchBtn2 = document.querySelector("#searchBtn");
+  const bookGallery = document.querySelector("#bookGallery");
+  const searchInput = document.querySelector("#searchInput").value;
+  const data = {
+    searchtitle: searchInput
+  };
+  fetch(`ui/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`
+    },
+    body: JSON.stringify(data)
+  }).then((response) => response.json()).then((data2) => {
+    if (data2.searchempty === true) {
+      bookGallery.innerHTML = "search is empty";
+    } else if (data2.display === true) {
+      console.log(data2.book);
+      let booklet = "";
+      data2.book.forEach((book) => {
+        booklet += `
           <div style="display: flex; background-color: #272626ff;  border-radius: 5px">
-          <p style="padding: 10px; display: flex; ">${n.title}</p>          
-          <p style="padding: 10px;">${n.id}</p>
-          <p style="padding: 10px;">${n.description}</p>
+          <p style="padding: 10px; display: flex; ">${book.title}</p>          
+          <p style="padding: 10px;">${book.id}</p>
+          <p style="padding: 10px;">${book.description}</p>
           <p style="padding: 10px;"></p>          
           </div>
 
-          `}),t.innerHTML=s}else o.empty===!0&&(t.innerHTML="No book found!")}).catch(o=>console.error("Error displaying file:",o))});
+          `;
+      });
+      bookGallery.innerHTML = booklet;
+    } else if (data2.empty === true) {
+      bookGallery.innerHTML = "No book found!";
+    }
+  }).catch((error) => console.error("Error displaying file:", error));
+});
 //# sourceMappingURL=app.js.map

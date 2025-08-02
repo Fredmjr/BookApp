@@ -34,7 +34,7 @@ fetch("/user/allusers", {
       
       `;
     /* document.body.appendChild(prevDiv); */
-    let page = document.querySelector("main");
+    let page = document.querySelector("galleryCont");
     page.innerHTML = prevDiv.innerHTML;
     console.log(data);
   });

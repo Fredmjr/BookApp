@@ -4,7 +4,8 @@ const sideDrawer = document.getElementById("sideDrawer");
 const logoutBtn = document.getElementById("logoutBtn");
 
 //..................................................Login & home Swap page...........................................................................
-function swapLoginFuc() {
+
+swapLoginFuc = async () => {
   fetch("/ui/loginpage", {
     method: "GET",
     headers: {
@@ -16,7 +17,7 @@ function swapLoginFuc() {
       let galleryCont = document.getElementById("galleryCont");
       galleryCont.innerHTML = data;
     });
-}
+};
 
 function toggleDrawer() {
   sideDrawer.classList.toggle("open");
