@@ -3,7 +3,7 @@
 BookApp is a book website. Both server-side and client code connected. The app is able to;
 
 - Create, Read, Update and Delete books.
-- Read, Update and Delete users.
+- Create, Read, Update and Delete users.
 
 Connected services to BookApp include;
 
