@@ -23,7 +23,7 @@
     <button id="searchBtn">search</button>
   </div>
   {{! home page books section }}
-  <div id="bookGallery">
+  {{!--   <div id="bookGallery">
     <div id="defaultBooks">
       <div class="homeBookCard">
         <div class="homeBookImageContainer">
@@ -52,5 +52,223 @@
         </div>
       </div>
     </div>
+  </div> --}}
+  <br />
+  {{! ..................................................... refined home page .....................................................}}
+  <div class="homeDivpage">
+
+    <!-- Main Header Section -->
+    <headerPage class="landingHM-hero-section">
+      <div class="landingHM-container">
+        <div class="landingHM-content">
+          <h1>BookApp <br /> in Zambia</h1>
+          <p class="landingHM-subtitle">We deliver books all over the nation!
+            10,000+ books in stock.</p>
+          <a href="#" class="landingHM-btn landingHM-btn-primary">Get started</a>
+        </div>
+        <div class="landingHM-book-images">
+          <img src="/imgs/9780007487288.jpg" alt="Book cover" />
+          <img src="/imgs/1882063525-0.jpeg" alt="Book cover" />
+        </div>
+      </div>
+    </headerPage>
+
+    <br />
+    <!--...........................................Cards panel.......................-->
+    <div class="catogCard-main-container">
+      <h2 class="catogCard-title">Top Categories</h2>
+      <p class="catogCard-description">Explore a wide range of genres to find
+        your next great read.</p>
+
+      <div class="catogCard-grid">
+
+        <div class="catogCard-item">
+          <a href="#" class="catogCard-category-card catogCard-category-card-1">
+            <img
+              class="categoryIcon"
+              src="/icons/spell-book.png"
+              width="70px"
+              alt="category"
+            />
+          </a>
+          <p class="catogCard-text">Fantasy</p>
+        </div>
+
+        <div class="catogCard-item">
+          <a href="#" class="catogCard-category-card catogCard-category-card-2">
+            <img
+              class="categoryIcon"
+              src="/icons/science-fiction.png"
+              width="70px"
+              alt="category"
+            /></a>
+          <p class="catogCard-text">Science Fiction</p>
+        </div>
+
+        <div class="catogCard-item">
+          <a href="#" class="catogCard-category-card catogCard-category-card-3">
+            <img
+              class="categoryIcon"
+              src="/icons/unknown.png"
+              width="70px"
+              alt="category"
+            /></a>
+          <p class="catogCard-text">Mystery</p>
+        </div>
+
+        <div class="catogCard-item">
+          <a href="#" class="catogCard-category-card catogCard-category-card-4">
+            <img
+              class="categoryIcon"
+              src="/icons/biography.png"
+              width="70px"
+              alt="category"
+            /></a>
+          <p class="catogCard-text">Biography</p>
+        </div>
+
+        <div class="catogCard-item">
+          <a href="#" class="catogCard-category-card catogCard-category-card-5">
+            <img
+              class="categoryIcon"
+              src="/icons/romance.png"
+              width="70px"
+              alt="category"
+            /></a>
+          <p class="catogCard-text">Romance</p>
+        </div>
+      </div>
+    </div>
+    <main>
+
+      <br />
+      <div class="breakerline"></div>
+      <!-- .........................................Trending on Bookio Section .........................................-->
+      <sectionPage3 class="landingHM-section">
+        <div class="landingHM-container">
+          <div class="landingHM-section-header">
+            <h2>Trending on BookApp</h2>
+            <a href="#" class="landingHM-view-all">View all
+              <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="landingHM-book-grid">
+            <div class="landingHM-book-item">
+              <img
+                class="landingHM-book-cover"
+                src="imgs/1882063525-0.jpeg"
+                alt="Book cover"
+              />
+              <div class="landingHM-rating">★★★★☆</div>
+              <p class="landingHM-title">The Art of Shadows</p>
+              <p class="landingHM-author">By: Alex Hunter</p>
+              <p class="landingHM-price">$80.00
+                <span class="landingHM-original">$100.00</span></p>
+            </div>
+            <div class="landingHM-book-item">
+              <img
+                class="landingHM-book-cover"
+                src="/imgs/Around the World in Eighty Days by Jules V.jpg"
+                alt="Book cover"
+              />
+              <div class="landingHM-rating">★★★★★</div>
+              <p class="landingHM-title">100 Selected Poems</p>
+              <p class="landingHM-author">By: Anna King</p>
+              <p class="landingHM-price">$40.00
+                <span class="landingHM-original">$50.00</span></p>
+            </div>
+            <div class="landingHM-book-item">
+              <img
+                class="landingHM-book-cover"
+                src="/imgs/Gemini_Generated_Image_tmj9o9tmj9o9tmj9.png"
+                alt="Book cover"
+              />
+              <div class="landingHM-rating">★★★★☆</div>
+              <p class="landingHM-title">Life Is What You Make It</p>
+              <p class="landingHM-author">By: Frank Miller</p>
+              <p class="landingHM-price">$80.00
+                <span class="landingHM-original">$100.00</span></p>
+            </div>
+            <div class="landingHM-book-item">
+              <img
+                class="landingHM-book-cover"
+                src="/imgs/R (1).jpg"
+                alt="Book cover"
+              />
+              <div class="landingHM-rating">★★★★☆</div>
+              <p class="landingHM-title">Heartless</p>
+              <p class="landingHM-author">By: Maria Meyer</p>
+              <p class="landingHM-price">$20.00</p>
+            </div>
+            <div class="landingHM-book-item">
+              <img
+                class="landingHM-book-cover"
+                src="/imgs/R.jpg"
+                alt="Book cover"
+              />
+              <div class="landingHM-rating">★★★★★</div>
+              <p class="landingHM-title">Uncultured Soul</p>
+              <p class="landingHM-author">By: John Doe</p>
+              <p class="landingHM-price">$15.00</p>
+            </div>
+          </div>
+        </div>
+      </sectionPage3>
+      <br />
+      <div class="breakerline"></div>
+      <br />
+
+      <!-- ............................................... Footer Section ......................................-->
+      <footerDiv class="footer-container">
+        <div class="footer-section">
+          <h3 class="footer-heading">About Us</h3>
+          <p>
+            We are a dedicated online bookstore offering a curated selection of
+            books from all genres. Our mission is to connect readers with
+            stories they love.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">New Releases</a></li>
+            <li><a href="#">Bestsellers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-heading">Contact</h3>
+          <ul>
+            <li>Email: contact@bookapp.com</li>
+            <li>Phone: +260 975986004</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-heading">Newsletter</h3>
+          <p>Subscribe to our newsletter for exclusive offers and updates.</p>
+          <form class="footer-newsletter-form">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              class="footer-newsletter-input"
+            />
+            <button
+              type="submit"
+              class="footer-newsletter-button"
+            >Subscribe</button>
+          </form>
+        </div>
+
+        <div class="footer-copyright">
+          &copy; 2024 BookApp.com, All rights reserved.
+        </div>
+      </footerDiv>
+
+    </main>
   </div>
+
 </div>

@@ -146,3 +146,605 @@
   transform: translateY(0);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+/* ...........................................Refined Home page css style.......................................*/
+/* General body and typography styles */
+:root {
+  --primary-color: wheat; /* Text color */
+  --secondary-color: sandybrown; /* Secondary text color */
+  --accent-color: #a52a2a; /* Accent color */
+  --background-color: #0f0e11; /* Page background */
+  --card-background-color: #3a383c; /* Card background */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.homeDivpage {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  line-height: 1.6;
+}
+
+.landingHM-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.landingHM-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px; /* Fully rounded */
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  border: none;
+  justify-content: center;
+}
+
+.landingHM-btn-primary {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.landingHM-btn-primary:hover {
+  background-color: #8b2323;
+  transform: translateY(-2px);
+}
+
+.landingHM-btn-secondary {
+  background-color: var(--accent-color);
+  color: #fff;
+  border-radius: 0.5rem;
+}
+
+.landingHM-btn-secondary:hover {
+  background-color: #8b2323;
+  transform: translateY(-1px);
+}
+
+/* Header Section Styles */
+.landingHM-hero-section {
+  background-color: #201f22;
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--primary-color);
+}
+
+.landingHM-hero-section h1 {
+  color: var(--primary-color);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.landingHM-hero-section .landingHM-subtitle {
+  color: var(--secondary-color);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.landingHM-hero-section .landingHM-book-images {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) translateX(20%);
+  display: none; /* Hide on small screens */
+}
+
+.landingHM-hero-section .landingHM-book-images img {
+  max-width: 150px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 0.1rem;
+  transform: rotate(-10deg);
+  display: none;
+}
+
+/* Featured Books Section */
+.landingHM-featured-books {
+  padding: 2rem 0;
+}
+
+.landingHM-featured-books-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.landingHM-book-card {
+  background-color: var(--card-background-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 250px; /* Ensure cards have a minimum height */
+}
+
+/* Specific card background colors for the featured section */
+.landingHM-featured-books-grid .landingHM-book-card:nth-child(1) {
+  background-color: #201f22;
+  color: var(--primary-color);
+}
+.landingHM-featured-books-grid .landingHM-book-card:nth-child(2) {
+  background-color: #3a383c;
+  color: var(--primary-color);
+}
+.landingHM-featured-books-grid .landingHM-book-card:nth-child(3) {
+  background-color: #201f22;
+  color: var(--primary-color);
+}
+
+.landingHM-book-card img {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+}
+
+.landingHM-book-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.landingHM-book-card .landingHM-card-description {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* Sale Banner Section */
+.landingHM-sale-banner {
+  background-color: #201f22;
+  padding: 3rem 0;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landingHM-sale-banner .landingHM-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.landingHM-sale-banner h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--primary-color);
+}
+
+.landingHM-sale-banner p {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.landingHM-sale-banner .landingHM-hero-image {
+  display: none; /* Hide on mobile */
+  position: absolute;
+  left: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.landingHM-sale-banner .landingHM-books-image {
+  display: none; /* Hide on mobile */
+  position: absolute;
+  right: -150px;
+  top: 50%;
+  transform: translateY(-50%) rotate(10deg);
+  z-index: 0;
+  width: 300px;
+}
+
+/* Trending & Categories Section */
+.landingHM-section {
+  padding: 3rem 0;
+}
+
+.landingHM-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.landingHM-section-header h2 {
+  margin-bottom: 0;
+}
+
+.landingHM-view-all {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.landingHM-view-all:hover {
+  text-decoration: underline;
+}
+
+.landingHM-book-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+}
+
+.landingHM-book-item {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.landingHM-book-item .landingHM-book-cover {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.landingHM-book-item .landingHM-rating {
+  color: #ffc107;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.landingHM-book-item .landingHM-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+.landingHM-book-item .landingHM-author {
+  color: var(--secondary-color);
+  font-size: 0.8rem;
+}
+
+.landingHM-book-item .landingHM-price {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.landingHM-book-item .landingHM-price .landingHM-original {
+  text-decoration: line-through;
+  color: #999;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+
+/* Small screens (less than 768px) */
+@media (max-width: 767px) {
+  .landingHM-hero-section {
+    padding: 3rem 1rem;
+  }
+  .landingHM-book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium screens (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .landingHM-hero-section {
+    text-align: left;
+    padding: 6rem 1rem;
+  }
+  .landingHM-hero-section .landingHM-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .landingHM-hero-section .landingHM-content {
+    width: 50%;
+    z-index: 2;
+  }
+  .landingHM-hero-section .landingHM-book-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(20%);
+  }
+  .landingHM-hero-section .landingHM-book-images img {
+    display: block;
+    max-width: 250px;
+  }
+  .landingHM-hero-section .landingHM-book-images img:nth-child(2) {
+    transform: rotate(5deg) translateY(-20px);
+    z-index: 1;
+  }
+  .landingHM-featured-books-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .landingHM-sale-banner .landingHM-container {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+  .landingHM-sale-banner .landingHM-hero-image,
+  .landingHM-sale-banner .landingHM-books-image {
+    display: block;
+  }
+  .landingHM-book-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .landingHM-book-item .landingHM-book-cover {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Large screens (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .landingHM-hero-section .landingHM-book-images {
+    transform: translateY(-50%) translateX(10%);
+  }
+  .landingHM-hero-section .landingHM-book-images img {
+    max-width: 220px;
+  }
+  .landingHM-book-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.breakerline {
+  background-color: #3a383c;
+  width: 100%;
+  height: 1px;
+  margin: 30px 0px;
+}
+
+/*.................................Category cards................................*/
+.catogCard-main-container {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.catogCard-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.catogCard-description {
+  text-align: center;
+  color: sandybrown;
+  margin-bottom: 1.5rem;
+}
+
+.catogCard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .catogCard-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .catogCard-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.catogCard-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.catogCard-category-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  height: 156px;
+  width: 156px;
+}
+
+.catogCard-category-card:hover {
+  transform: translateY(-5px);
+}
+
+.catogCard-category-card-1 {
+  background-color: #333;
+}
+.catogCard-category-card-2 {
+  background-color: #2a2a2a;
+}
+.catogCard-category-card-3 {
+  background-color: #333;
+}
+.catogCard-category-card-4 {
+  background-color: #2a2a2a;
+}
+.catogCard-category-card-5 {
+  background-color: #333;
+}
+
+.catogCard-text {
+  margin-top: 0.25rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: wheat;
+  text-align: center;
+}
+
+/*..................................................newsletter section...................................................*/
+.footer-container {
+  background-color: #201f22;
+  color: wheat;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  border-radius: 7px;
+}
+
+/* Footer Section for each column */
+.footer-section {
+  flex: 1 1 200px;
+  max-width: 300px;
+}
+
+.footer-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* List of Links Styles */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  color: wheat;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #a52a2a;
+}
+
+/* Newsletter Form Styles */
+.footer-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-newsletter-input {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: wheat;
+}
+
+.footer-newsletter-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #a52a2a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.footer-newsletter-button:hover {
+  background-color: #8b2323;
+}
+
+/* Copyright Section */
+.footer-copyright {
+  width: 100%;
+  text-align: center;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid #444;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* Media Queries for Responsive Layout */
+
+/* Small screens (mobile devices) */
+@media (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-container {
+    justify-content: space-around;
+  }
+  .footer-section {
+    flex: 1 1 45%;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+  .footer-container {
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex: 1 1 200px;
+  }
+}
+
+.categoryIcon {
+  filter: brightness(0) invert(1);
+}
