@@ -164,3 +164,27 @@ function filterCards(letter) {
 render();
 
 //...........................................create book option 2................................................
+function testingFuc() {
+  console.log("have been called");
+}
+
+function creatingBKFunc() {
+  console.log("creating book");
+  const ctlTitle = document.querySelector(".ctlTitle").value;
+  const ctlDescription = document.querySelector(".ctlDescription").value;
+  const ctlbookCover = document.querySelector(".ctlbookCover").value;
+  const ctlbookFile = document.querySelector(".ctlbookFile").value;
+  const errorMgsInputs = document.querySelector("#errorMgsInputs");
+  console.log(ctlTitle, ctlDescription, ctlbookCover, ctlbookFile);
+  testingFuc();
+  if (!ctlTitle || !ctlDescription || !ctlbookCover || !ctlbookFile) {
+    errorMgsInputs.innerHTML = "Please fill in al fields!";
+    errorMgsInputs.style.display = "block";
+    setTimeout(() => {
+      errorMgsInputs.style.display = "none";
+      /*       errorMgsInputs.style.maxWidth "600px"; */
+      errorMgsInputs.style.borderRadius = "8px";
+    }, 2000);
+  } else {
+  }
+}
