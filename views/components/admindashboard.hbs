@@ -279,16 +279,9 @@
     <div id="create-book" class="content-panel"><button
         class="close-btn"
         onclick="hidePanel()"
-      >×</button><h2>Create Book</h2>
-      {{!....................................... Error message Inputs fields...............................}}
-      <div id="errorMgsInputs">
-        <data class="errorMgsInputsClass">
-          <div class="errorMgsInputCont">
-            error
-          </div>
-        </data>
+      >×</button>
+      <h2>Create Book</h2>
 
-      </div>
       <div class="bookdashshelter">
         <div class="ctl-container">
           <form id="ctl-bookUploadForm">
@@ -371,10 +364,20 @@
               <p>Upload Book File (PDF, DOCX, EPUB).</p>
             </div>
 
-            <div class="ctlsubmitBn" onclick="creatingBKFunc()">Submit</div>
+            <div class="ctlsubmitBn" onclick="testingFuc()">Submit</div>
           </form>
         </div>
       </div>
+
+      {{!....................................... Error message Inputs fields...............................}}
+      <span id="errorMgsInputs">
+        <data class="errorMgsInputsClass">
+          <div class="errorMgsInputCont">
+            error
+          </div>
+        </data>
+
+      </span>
     </div>
 
     {{! ................................Read Boo.................... }}

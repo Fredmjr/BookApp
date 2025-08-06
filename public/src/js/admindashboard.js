@@ -165,8 +165,103 @@ render();
 
 //...........................................create book option 2................................................
 function testingFuc() {
-  console.log("have been called");
+  const ctlTitle = document.querySelector(".ctlTitle").value;
+  const ctlDescription = document.querySelector(".ctlDescription").value;
+  const ctlbookCover = document.querySelector(".ctlbookCover").value;
+  const ctlbookFile = document.querySelector(".ctlbookFile").value;
+  const errorMgsInputs = document.querySelector("#errorMgsInputs");
+  /*   console.log(ctlTitle, ctlDescription, ctlbookCover, ctlbookFile); */
+  if (!ctlTitle || !ctlDescription || !ctlbookCover || !ctlbookFile) {
+    stylingErrMgsFunc();
+    errorMgsInputs.innerHTML = "Please fill all fields!";
+  } else {
+    /*Checking BOOK COVER file extention (PNG, JPG or JEPG only) */
+    const filename = ctlbookCover;
+    function checkfileExtention(filename) {
+      return filename.split(".").pop().toLowerCase();
+    }
+    const fileExtension = checkfileExtention(filename);
+    //here add more validationa dsinitalization form sercurty checks
+    //1.Bookcover format validation.....................................
+    if (fileExtension !== "") {
+      const fileExtensionObj = {
+        fileExt: fileExtension,
+      };
+
+      fetch("/admin/form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+        },
+        body: JSON.stringify(fileExtensionObj),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.fileExtValid == true) {
+            console.log("bookcover correct format");
+            //2. file format validation...............................................................................
+
+            const bookFilename = ctlbookFile;
+            function checkfileExtention(bookFilename) {
+              return bookFilename.split(".").pop().toLowerCase();
+            }
+            const bookExt = checkfileExtention(bookFilename);
+            //here add more validationa dsinitalization form sercurty checks
+            if (bookExt !== "") {
+              const bookExtOjb = {
+                bookFileExt: bookExt,
+              };
+
+              fetch("/admin/formfile", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+                },
+                body: JSON.stringify(bookExtOjb),
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  if (data.bookExtValid == true) {
+                    console.log("correct file format");
+                    //2. file format validation.......................
+                  } else if (data.errorMgs == true) {
+                    console.log("Incorrect book file format!");
+                    stylingErrMgsFunc();
+                    errorMgsInputs.innerHTML = "Incorrect book file format!";
+                  }
+                });
+            }
+          } else if (data.errorMgs == true) {
+            console.log("Incorrect book cover format!");
+            stylingErrMgsFunc();
+            errorMgsInputs.innerHTML = "Incorrect book cover format!";
+          }
+        });
+    }
+  }
 }
+
+//callback function for creating function below this one
+stylingErrMgsFunc = async () => {
+  errorMgsInputs.style.display = "flex";
+  errorMgsInputs.style.color = "red";
+  errorMgsInputs.style.justifyContent = "center";
+  errorMgsInputs.style.justifySelf = "center";
+  errorMgsInputs.style.alignItems = "center";
+  errorMgsInputs.style.padding = "20px";
+  errorMgsInputs.style.height = "100%";
+  errorMgsInputs.style.width = "100%";
+  errorMgsInputs.style.maxWidth = "600px";
+  errorMgsInputs.style.borderRadius = "none";
+  errorMgsInputs.style.backgroundColor = "#2a2a2a";
+  errorMgsInputs.style.borderRadius = "8px";
+  setTimeout(() => {
+    errorMgsInputs.style.display = "none";
+    /*       errorMgsInputs.style.maxWidth "600px"; */
+  }, 2000);
+};
 
 function creatingBKFunc() {
   console.log("creating book");
@@ -176,15 +271,48 @@ function creatingBKFunc() {
   const ctlbookFile = document.querySelector(".ctlbookFile").value;
   const errorMgsInputs = document.querySelector("#errorMgsInputs");
   console.log(ctlTitle, ctlDescription, ctlbookCover, ctlbookFile);
-  testingFuc();
   if (!ctlTitle || !ctlDescription || !ctlbookCover || !ctlbookFile) {
-    errorMgsInputs.innerHTML = "Please fill in al fields!";
-    errorMgsInputs.style.display = "block";
-    setTimeout(() => {
-      errorMgsInputs.style.display = "none";
-      /*       errorMgsInputs.style.maxWidth "600px"; */
-      errorMgsInputs.style.borderRadius = "8px";
-    }, 2000);
+    stylingErrMgsFunc();
+    errorMgsInputs.innerHTML = "Please fill all fields!";
   } else {
+    /*Checking BOOK COVER file extention (PNG, JPG or JEPG only) */
+    const filename = ctlbookCover;
+    function checkfileExtention(filename) {
+      return filename.split(".").pop().toLowerCase();
+    }
+    const fileExtension = checkfileExtention(filename);
+    const requiredfileExPNG = "png";
+    const requiredfileExJPG = "jpg";
+    const requiredfileExJPEG = "jpeg";
+    if (
+      fileExtension == requiredfileExJPG ||
+      fileExtension == requiredfileExJPEG ||
+      fileExtension == requiredfileExPNG
+    ) {
+      console.log("file type is: PNG, JPEG or JPG");
+      /*Checking BOOK FILE extention (PDF, DOCX or EPUB only)   */
+      const bookfileExtension = ctlbookFile;
+
+      function checkfileExtention(bookfileExtension) {
+        return bookfileExtension.split(".").pop().toLowerCase();
+      }
+      const bookFileformat = checkfileExtention(bookfileExtension);
+      const requiredfileExPDF = "pdf";
+      const requiredfileExDOCX = "docx";
+      const requiredfileExEPUB = "epub";
+      if (
+        bookFileformat == requiredfileExPDF ||
+        bookFileformat == requiredfileExDOCX ||
+        bookFileformat == requiredfileExEPUB
+      ) {
+        console.log("file type is PDF, DOCX, EPUB");
+      } else {
+        stylingErrMgsFunc();
+        errorMgsInputs.innerHTML = "invalid file format!";
+      }
+    } else {
+      stylingErrMgsFunc();
+      errorMgsInputs.innerHTML = "invalid bookcover format!";
+    }
   }
 }

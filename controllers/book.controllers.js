@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import sequelize from "../config/db.js";
 import { v4 as uuidv4 } from "uuid";
+import { console } from "inspector";
 
 const fileUuid = uuidv4();
 const fields = {};
@@ -542,6 +543,75 @@ export const searchedBook = async (req, res) => {
     res.json({
       display: true,
       book: book,
+    });
+  }
+};
+
+/*........................................ Form Validation ....................................*/
+//Checking BOOK COVER file extention (PNG, JPG or JEPG only)
+export const formValidation = async (req, res) => {
+  const { fileExt } = req.body;
+  try {
+    if (fileExt !== "") {
+      const requiredfileExPNG = "png";
+      const requiredfileExJPG = "jpg";
+      const requiredfileExJPEG = "jpeg";
+      if (
+        fileExt == requiredfileExJPG ||
+        fileExt == requiredfileExJPEG ||
+        fileExt == requiredfileExPNG
+      ) {
+        res.json({
+          fileExtValid: true,
+        });
+        console.log(error);
+      } else {
+        /*  res.send("Incorrect bookcover format"); */
+        res.json({
+          errorMgs: true,
+          /* errorMgs: "Incorrect file format!", */
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    /* res.send("Unable to check bookcover format!"); */
+    res.json({
+      errorMgs: true,
+      /* errorMgs: "Incorrect file format!", */
+    });
+  }
+};
+
+//Checking FILE extention (PDF, DOCX, EPUB only)
+export const fileformatValidation = async (req, res) => {
+  const { bookFileExt } = req.body;
+  try {
+    if (bookFileExt !== "") {
+      const requiredfileExPDF = "pdf";
+      const requiredfileExDOCX = "docx";
+      const requiredfileExEPUB = "epub";
+      if (
+        bookFileExt == requiredfileExPDF ||
+        bookFileExt == requiredfileExDOCX ||
+        bookFileExt == requiredfileExEPUB
+      ) {
+        res.json({
+          bookExtValid: true,
+        });
+        console.log(error);
+      } else {
+        res.json({
+          errorMgs: true,
+          /* errorMgs: "Incorrect file format!", */
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({
+      errorMgs: true,
+      /* errorMgs: "Unable to check file format!", */
     });
   }
 };

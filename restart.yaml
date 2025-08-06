@@ -1,0 +1,21 @@
+- name: update_application
+  hosts: vultr
+  become: true
+
+  tasks:
+    - name: compose down
+      ansible.builtin.shell: docker compose down
+      args:
+        chdir: var/www/html/BookApp
+    - name: pull changes
+      ansible.builtin.shell: git pull
+      args:
+        chdir: var/www/html/BookApp
+    - name: build
+      ansible.builtin.shell: docker compose build
+      args:
+        chdir: var/www/html/BookApp
+    - name: compose up
+      ansible.builtin.shell: docker compose up -d
+      args:
+        chdir: var/www/html/BookApp

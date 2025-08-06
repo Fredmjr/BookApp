@@ -8,7 +8,8 @@
     "dev": "concurrently \"nodemon\" \"cd bin && minio.exe server C:minio --console-address :9001\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx postcss public/src/css/*.css --dir public/dist/css && node build.mjs",
-    "buildall": "npm run build && npm run dev"
+    "buildall": "npm run build && npm run dev",
+    "serverupdate": "sudo ansible-playbook -i inventory.ini restart.yaml -k -vvvv"
   },
   "keywords": [],
   "author": "",

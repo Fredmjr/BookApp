@@ -16,6 +16,7 @@ import {
   updateBookdata, */,
   contentviewpage,
   queryfileImage,
+  formValidation,
 } from "../controllers/book.controllers.js";
 import { testingJWT } from "../controllers/user.controllers.js";
 
@@ -25,6 +26,8 @@ router.post(
   expressjwt({ secret: process.env.PRIVATE_KEY, algorithms: ["HS256"] }),
   addBookHandler
 );
+router.post("/form", formValidation);
+router.post("/formfile", formValidation);
 router.get("/books", getAllBooks);
 router.get("/book/:id", getBookById);
 router.patch("/updatebook/:id", updateBook);
