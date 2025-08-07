@@ -17,6 +17,7 @@ import {
   contentviewpage,
   queryfileImage,
   formValidation,
+  fileformatValidation,
 } from "../controllers/book.controllers.js";
 import { testingJWT } from "../controllers/user.controllers.js";
 
@@ -27,7 +28,7 @@ router.post(
   addBookHandler
 );
 router.post("/form", formValidation);
-router.post("/formfile", formValidation);
+router.post("/formfile", fileformatValidation);
 router.get("/books", getAllBooks);
 router.get("/book/:id", getBookById);
 router.patch("/updatebook/:id", updateBook);

@@ -184,10 +184,10 @@ function testingFuc() {
     //here add more validationa dsinitalization form sercurty checks
     //1.Bookcover format validation.....................................
     if (fileExtension !== "") {
-      const fileExtensionObj = {
+      let fileExtensionObj = {
         fileExt: fileExtension,
       };
-
+      console.log(fileExtension + "extention here");
       fetch("/admin/form", {
         method: "POST",
         headers: {
@@ -199,7 +199,7 @@ function testingFuc() {
         .then((response) => response.json())
         .then((data) => {
           if (data.fileExtValid == true) {
-            console.log("bookcover correct format");
+            console.log("bookcover correct format" + data.fileExtValid);
             //2. file format validation...............................................................................
 
             const bookFilename = ctlbookFile;
@@ -207,9 +207,10 @@ function testingFuc() {
               return bookFilename.split(".").pop().toLowerCase();
             }
             const bookExt = checkfileExtention(bookFilename);
-            //here add more validationa dsinitalization form sercurty checks
+            console.log(bookExt);
+            //here add more validationa sanitalization form sercurty checks on forms
             if (bookExt !== "") {
-              const bookExtOjb = {
+              let bookExtOjb = {
                 bookFileExt: bookExt,
               };
 
@@ -223,15 +224,32 @@ function testingFuc() {
               })
                 .then((response) => response.json())
                 .then((data) => {
-                  if (data.bookExtValid == true) {
-                    console.log("correct file format");
-                    //2. file format validation.......................
-                  } else if (data.errorMgs == true) {
-                    console.log("Incorrect book file format!");
-                    stylingErrMgsFunc();
-                    errorMgsInputs.innerHTML = "Incorrect book file format!";
+                  console.log(data);
+                  if (data.errorMgs == true) {
+                    //empty or file not detected
+                    console.log(data.mgs);
+                  } else {
+                    //.....................try
+                    if (data.errorMgs == true) {
+                      //No book file detected!
+                      console.log(data.mgs);
+                    } else {
+                      //...................not-empty
+                      if (data.errorMgs == true) {
+                        //incorrect file format!
+                        console.log(data.mgs);
+                      } else {
+                        //..................file format
+                        console.log(data.mgs + "book file format......");
+                        //..................file format
+                      }
+                      //.....................not-empty
+                    }
+                    //...................try
                   }
                 });
+            } else {
+              console.log("file empty");
             }
           } else if (data.errorMgs == true) {
             console.log("Incorrect book cover format!");

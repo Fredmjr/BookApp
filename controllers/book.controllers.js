@@ -1,7 +1,7 @@
 import bookModel from "../models/book.model.js";
 import Busboy from "busboy";
 import path from "path";
-import fs from "fs";
+
 import { fileURLToPath } from "url";
 import minioClient from "../config/storage.js";
 const __filename = fileURLToPath(import.meta.url);
@@ -550,8 +550,8 @@ export const searchedBook = async (req, res) => {
 /*........................................ Form Validation ....................................*/
 //Checking BOOK COVER file extention (PNG, JPG or JEPG only)
 export const formValidation = async (req, res) => {
-  const { fileExt } = req.body;
   try {
+    const { fileExt } = req.body;
     if (fileExt !== "") {
       const requiredfileExPNG = "png";
       const requiredfileExJPG = "jpg";
@@ -564,7 +564,6 @@ export const formValidation = async (req, res) => {
         res.json({
           fileExtValid: true,
         });
-        console.log(error);
       } else {
         /*  res.send("Incorrect bookcover format"); */
         res.json({
@@ -584,6 +583,7 @@ export const formValidation = async (req, res) => {
 };
 
 //Checking FILE extention (PDF, DOCX, EPUB only)
+
 export const fileformatValidation = async (req, res) => {
   const { bookFileExt } = req.body;
   try {
@@ -598,13 +598,52 @@ export const fileformatValidation = async (req, res) => {
       ) {
         res.json({
           bookExtValid: true,
+          mgs: bookFileExt,
         });
-        console.log(error);
+      } else {
+        res.json({
+          errorMgs: true,
+          mgs: "incorrect file format!",
+        });
+      }
+    } else {
+      res.json({
+        errorMgs: true,
+        mgs: "No book file detected!",
+      });
+    }
+  } catch (error) {
+    res.json({
+      errorMgs: true,
+      mgs: "Failed to validation book file format!",
+    });
+    console.log("error");
+  }
+};
+
+export const fileformatValidationold = async (req, res) => {
+  try {
+    const { bookFileExt } = req.body;
+    console.log(bookFileExt + "bookfiletx here.....................");
+
+    if (bookFileExt) {
+      const requiredfileExPDF = "pdf";
+      const requiredfileExDOCX = "docx";
+      const requiredfileExEPUB = "epub";
+      if (
+        bookFileExt !== requiredfileExPDF ||
+        bookFileExt !== requiredfileExDOCX ||
+        bookFileExt !== requiredfileExEPUB
+      ) {
+        res.json({
+          bookExtValid: true,
+        });
       } else {
         res.json({
           errorMgs: true,
           /* errorMgs: "Incorrect file format!", */
         });
+        console.log(bookFileExt);
       }
     }
   } catch (error) {
@@ -613,5 +652,6 @@ export const fileformatValidation = async (req, res) => {
       errorMgs: true,
       /* errorMgs: "Unable to check file format!", */
     });
+    console.log(bookFileExt);
   }
 };
