@@ -31,5 +31,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: fred/bookapp_image:lastest
+          tags: ${{ secrets.DOCKERHUB_USER }}/bookapp_image:lastest
 #END -- here you choose to do (1).docker image or (2).test run
