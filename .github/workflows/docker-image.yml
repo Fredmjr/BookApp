@@ -32,5 +32,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/bookapp:lastest
+          tags: ghcr.io/${{ github.respository_owner }}/bookapp:lastest
 #END -- here you choose to do (1).docker image or (2).test run
