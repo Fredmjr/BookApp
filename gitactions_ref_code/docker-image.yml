@@ -1,4 +1,4 @@
-name: Pushing to DockerHub
+name: Docker Image CI
 
 on:
   push:
@@ -18,18 +18,16 @@ jobs:
       - name: setup buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: login to dockerhub
-        uses: docker/login-action@v3
-        with:
-          username: ${{secrets.DOCKERHUB_USER}}
-          password: ${{secrets.DOCKERHUB_PASSWORD}}
+      - name: build the Docker image
+        run: docker build -t bookapp:latest .
         #saving and uplaoding has to be made, adding in the future
 
       #save & download is optional - for self testing.
-      - name: buil and push
-        uses: docker/build-push-action@v3
+      - name: saving artifact
+        run: docker save bookapp:latest | gzip > bookapp.tar.gz
+      - name: upload arttifact
+        uses: actions/upload-artifact@v4
         with:
-          context: .
-          push: true
-          tags: fred/bookapp_image:lastest
+          name: bookapp-image
+          path: bookapp.tar.gz
 #END -- here you choose to do (1).docker image or (2).test run
