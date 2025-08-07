@@ -1,10 +1,12 @@
 services:
   app:
-    build: .
+    image: ghcr.io/fredmjr/bookapp:lastest
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+      - minio
     env_file:
       - .env
   minio:

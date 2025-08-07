@@ -34,4 +34,15 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/fredmjr/bookapp:lastest
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: ssh & deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.ssh_host }}
+          username: ${{ secrets.ssh_username }}
+          password: ${{ secrets.ssh_password }}
+          script: cd var/www/html/BookApp && docker compose pull && docker compose up -d
 #END -- here you choose to do (1).docker image or (2).test run
