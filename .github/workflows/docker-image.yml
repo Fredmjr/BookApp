@@ -21,8 +21,8 @@ jobs:
       - name: login to dockerhub
         uses: docker/login-action@v3
         with:
-          username: ${{secrets.DOCKERHUB_USER}}
-          password: ${{secrets.DOCKERHUB_PASSWORD}}
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
         #saving and uplaoding has to be made, adding in the future
 
       #save & download is optional - for self testing.
