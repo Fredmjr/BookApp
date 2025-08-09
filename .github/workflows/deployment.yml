@@ -44,5 +44,5 @@ jobs:
           host: ${{ secrets.ssh_host }}
           username: ${{ secrets.ssh_username }}
           password: ${{ secrets.ssh_password }}
-          script: cd BookApp && docker compose pull && docker compose up -d
+          script: cd BookApp && docker compose pull app && docker compose up -d --pull
 #END -- here you choose to do (1).docker image or (2).test run

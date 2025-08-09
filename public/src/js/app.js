@@ -204,6 +204,7 @@ searchBtn.addEventListener("click", () => {
         /* ............................ Searched book found................................... */
 
         console.log(data.book);
+        console.log(data.book);
         let booklet = "";
         data.book.forEach((book) => {
           booklet += `
