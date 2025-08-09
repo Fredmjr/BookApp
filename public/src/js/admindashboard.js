@@ -241,6 +241,7 @@ function testingFuc() {
                       } else {
                         //..................file format
                         console.log(data.mgs + "book file format......");
+                        console.log("testing github action's image.");
                         //..................file format
                       }
                       //.....................not-empty
