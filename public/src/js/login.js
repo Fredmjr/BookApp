@@ -115,9 +115,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 page.innerHTML = `${data}`;
               });
           } else {
-            console.log(
-              "(1).extra user page, coming soon! or (2).sign up page!"
+            const errorMgsLoginShell = document.querySelector(
+              ".errorMgsLoginShell"
             );
+            const errorMgsLogin = document.querySelector(".errorMgsLogin");
+            errorMgsLogin.innerHTML = "No user account matched";
+            errorMgsLoginShell.style.display = "block";
+            setTimeout(() => {
+              errorMgsLoginShell.style.display = "none";
+            }, 2000);
           }
         }
       });
@@ -249,8 +255,16 @@ function registerNewuserFunc() {
     if (value2 !== value3) {
       setTimeout(() => {
         accoungMgs.innerText = "Password doesn't match!";
+        accoungMgs.style.border = "2px solid red";
+        accoungMgs.style.fontSize = "1.1em";
+        accoungMgs.style.borderRadius = "3px";
+        accoungMgs.style.color = "wheat";
+        accoungMgs.style.padding = "12px 10px";
+        accoungMgs.style.display = "flex";
+        accoungMgs.style.justifyContent = "center";
         setTimeout(() => {
           accoungMgs.innerText = "";
+          accoungMgs.style = "none";
         }, 1500);
       }, 300);
     } else {
@@ -290,8 +304,8 @@ function registerNewuserFunc() {
             })
               .then((response) => response.text())
               .then((data) => {
-                let page = document.querySelector("main");
-                page.outerHTML = `${data}`;
+                let page = document.querySelector("#galleryCont");
+                page.innerHTML = data;
               });
           }
         });

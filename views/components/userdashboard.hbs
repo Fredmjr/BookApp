@@ -1,41 +1,284 @@
 <main>
   <div>
     <div id="usr-card-section">
-      <div class="usr-section-title"> User View Section</div>
+      <div class="usr-section-title">User Dashboard</div>
       <div class="usr-container">
         <div
           class="usr-card"
           id="usr-alluserBtn"
           onclick="usrshowPanel('usr-all-users')"
-        >All Users</div>
-        <div class="usr-card" onclick="usrshowPanel('usr-user-content')">User
-          Content View</div>
-        <div class="usr-card" onclick="usrshowPanel('usr-user-roles')">User
-          Roles</div>
-        <div class="usr-card" onclick="usrshowPanel('usr-new-users')">New Users</div>
+        >Profile</div>
+        <div
+          class="usr-card"
+          onclick="usrshowPanel('usr-user-content')"
+        >Book-Shelf</div>
+        <div class="usr-card" onclick="usrshowPanel('usr-user-roles')">
+          Activity</div>
+        <div
+          class="usr-card"
+          onclick="usrshowPanel('usr-new-users')"
+        >Settings</div>
       </div>
 
     </div>
 
-    <!-- Content Panels -->
+    <!-- ................profile.............................. -->
     <div id="usr-all-users" class="usr-content-panel">
       <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
-      <h2>All Users</h2><div>
-        <div></div>
+      <h2>Profile</h2><div>
+        <div>
+          <div class="profl-container">
+            <div class="profl-header">
+              <img
+                class="profl-pic"
+                src="https://placehold.co/100x100/f5deb3/505050?text=FM"
+                alt="User Profile Picture"
+              />
+              <div class="profl-info">
+                <h1 class="profl-name">Fredmjr</h1>
+                <p class="profl-bio">
+                  An avid writer, reader, and publisher with a passion for
+                  storytelling. My journey involves crafting compelling
+                  narratives, diving into countless books for inspiration, and
+                  navigating the world of selling my own works. I believe every
+                  story deserves to be told and shared.
+                </p>
+              </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="profl-content-sections">
+              <div class="profl-card">
+                <h2 class="profl-section-title">Recent Activity</h2>
+                <p class="profl-activity-text">Updated 'Project Everest'
+                  documentation.
+                  <span class="profl-timestamp">2025-08-13 at 10:30 AM</span></p>
+                <p class="profl-activity-text">Uploaded 3 new images to the
+                  'Portfolio' folder.
+                  <span class="profl-timestamp">2025-08-12 at 04:15 PM</span></p>
+                <p class="profl-activity-text">Commented on the
+                  'Design-Mockups.pdf' file.
+                  <span class="profl-timestamp">2025-08-12 at 09:00 AM</span></p>
+              </div>
+
+              <div class="profl-card">
+                <h2 class="profl-section-title">book-shelf</h2>
+                <ul class="profl-file-list">
+                  <li class="profl-file-item">
+                    <span class="profl-file-name profl-book-name">created books</span>
+                    <span class="profl-file-size">2025-08-11 at 02:00 PM</span>
+                  </li>
+                  <li class="profl-file-item">
+                    <span class="profl-file-name profl-book-name">read books</span>
+                    <span class="profl-file-size">2025-08-10 at 11:30 AM</span>
+                  </li>
+                  <li class="profl-file-item">
+                    <span class="profl-file-name profl-book-name">updated books</span>
+                    <span class="profl-file-size">2025-08-09 at 08:45 AM</span>
+                  </li>
+                  <li class="profl-file-item">
+                    <span class="profl-file-name profl-book-name">deleted books</span>
+                    <span class="profl-file-size">2025-08-08 at 05:20 PM</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- ................bookshelf.............................. -->
     <div id="usr-user-content" class="usr-content-panel">
       <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
-      <h2>User Content View</h2>
-      <div>ggggg</div>
+      <h2>Book-Shelf</h2>
+      <div>
+        <div class="shelf-container">
+          <!-- Books Created -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Books Created</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Shadow of the Citadel</span>
+                <span class="shelf-book-status">Published: 2025-08-01</span>
+              </li>
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">A Whisper in the Woods</span>
+                <span class="shelf-book-status">Published: 2025-07-25</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Still Writing -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Still Writing</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">Echoes of the Void</span>
+                <span class="shelf-book-status">Drafting - Chapter 5</span>
+              </li>
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Last Starfall</span>
+                <span class="shelf-book-status">Outlining - 50% complete</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coming Soon -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Coming Soon</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">City of a Thousand Dreams</span>
+                <span class="shelf-book-status">Release Date: 2025-11-15</span>
+              </li>
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">Beyond the Horizon</span>
+                <span class="shelf-book-status">Anticipated: Early 2026</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Read -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Read</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Clockwork Heart</span>
+                <span class="shelf-book-status">Finished: 2025-08-05</span>
+              </li>
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Alchemist's Daughter</span>
+                <span class="shelf-book-status">Finished: 2025-07-30</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Updated -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Updated</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Crimson Blade</span>
+                <span class="shelf-book-status">Updated: 2025-08-10</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Deleted -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Deleted</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Fading Map</span>
+                <span class="shelf-book-status">Deleted: 2025-07-19</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sold -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Sold</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">Chronicles of Eldoria</span>
+                <span class="shelf-book-status">Copies Sold: 1500+</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bought -->
+          <div class="shelf-card">
+            <h2 class="shelf-section-title">Bought</h2>
+            <ul class="shelf-list">
+              <li class="shelf-list-item">
+                <span class="shelf-book-name">The Serpent's Coil</span>
+                <span class="shelf-book-status">Purchased: 2025-08-08</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- ................activity.............................. -->
     <div id="usr-user-roles" class="usr-content-panel">
       <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
-      <h2>User Roles</h2>
+      <h2>Activity</h2>
+      <div>
+        <div class="actty-container">
+          <!-- Main Activity Feed Card -->
+          <div class="actty-card actty-activity-card">
+            <h2 class="actty-section-title">User Activity Feed</h2>
+            <ul class="actty-feed-list">
+              <li class="actty-feed-item">
+                <span class="actty-feed-description">Created a new book titled
+                  'The Starless Sky'.</span>
+                <span class="actty-feed-timestamp">2025-08-13 at 09:45 PM</span>
+              </li>
+              <li class="actty-feed-item">
+                <span class="actty-feed-description">Read Chapter 3 of 'The
+                  Clockwork Heart'.</span>
+                <span class="actty-feed-timestamp">2025-08-13 at 08:10 PM</span>
+              </li>
+              <li class="actty-feed-item">
+                <span class="actty-feed-description">Updated the synopsis for
+                  'Echoes of the Void'.</span>
+                <span class="actty-feed-timestamp">2025-08-13 at 03:00 PM</span>
+              </li>
+              <li class="actty-feed-item">
+                <span class="actty-feed-description">Sold 5 more copies of
+                  'Chronicles of Eldoria'.</span>
+                <span class="actty-feed-timestamp">2025-08-12 at 11:30 AM</span>
+              </li>
+              <li class="actty-feed-item">
+                <span class="actty-feed-description">Started writing a new short
+                  story, 'The Last Lantern'.</span>
+                <span class="actty-feed-timestamp">2025-08-12 at 10:00 AM</span>
+              </li>
+              <li class="actty-feed-item">
+                <span class="actty-feed-description">Purchased 'The Serpent's
+                  Coil' from the marketplace.</span>
+                <span class="actty-feed-timestamp">2025-08-11 at 05:20 PM</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Statistics/Summary Card -->
+          <div class="actty-card actty-stats-card">
+            <h2 class="actty-section-title">This Month's Stats</h2>
+            <ul class="actty-stats-list">
+              <li class="actty-stats-item">
+                <span class="actty-stats-label">Books Created</span>
+                <span class="actty-stats-value">3</span>
+              </li>
+              <li class="actty-stats-item">
+                <span class="actty-stats-label">Books Read</span>
+                <span class="actty-stats-value">2</span>
+              </li>
+              <li class="actty-stats-item">
+                <span class="actty-stats-label">Pages Written</span>
+                <span class="actty-stats-value">85</span>
+              </li>
+              <li class="actty-stats-item">
+                <span class="actty-stats-label">Total Copies Sold</span>
+                <span class="actty-stats-value">120</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- ................settings.............................. -->
     <div id="usr-new-users" class="usr-content-panel">
       <button class="usr-close-btn" onclick="usrhidePanel()">×</button>
-      <h2>New Users</h2>
+      <h2>Settings</h2>
+      <div>
+
+      </div>
     </div>
   </div>
 </main>

@@ -18,6 +18,7 @@ import {
   queryfileImage,
   formValidation,
   fileformatValidation,
+  BookApproval,
 } from "../controllers/book.controllers.js";
 import { testingJWT } from "../controllers/user.controllers.js";
 
@@ -43,6 +44,7 @@ router.get("/jwtest", testingJWT);
 /* router.patch("/updatebookdata/:name", updateBookdata); */
 router.post("/createbucket", createS3Bucket);
 router.delete("/deletebucket", deleteS3Bucket);
+router.get("/approval", BookApproval);
 
 router.get("/contentviewpage", contentviewpage);
 router.get("/dashboard", (req, res) => {

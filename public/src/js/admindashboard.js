@@ -17,7 +17,7 @@ function hidePanel() {
 const alluserBtn = document.getElementById(".alluserBtn");
 console.log(alluserBtn);
 
-fetch("/user/allusers", {
+/* fetch("/user/allusers", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -32,13 +32,13 @@ fetch("/user/allusers", {
       ${data.email}
     </div>
       
-      `;
-    /* document.body.appendChild(prevDiv); */
-    let page = document.querySelector("galleryCont");
+      `; */
+/* document.body.appendChild(prevDiv); */
+/*     let page = document.querySelector("galleryCont");
     page.innerHTML = prevDiv.innerHTML;
     console.log(data);
   });
-
+ */
 //settings page
 
 function stgToggleSwitch(el) {
@@ -163,6 +163,11 @@ function filterCards(letter) {
 
 render();
 
+//..................................Return Home section......................................
+function returnFuc() {
+  window.location.reload();
+}
+
 //...........................................create book option 2................................................
 function testingFuc() {
   const ctlTitle = document.querySelector(".ctlTitle").value;
@@ -256,7 +261,7 @@ function testingFuc() {
                         formData.append("bookFile", ctlbookFile);
                         console.log(formData);
 
-                        fetch("/app/cloud1AImodel", {
+                        /*   fetch("/admin/addbookuu", {
                           method: "POST",
                           headers: {
                             "Content-Type": "application/json",
@@ -265,11 +270,30 @@ function testingFuc() {
                             )}`,
                             body: formData,
                           },
+                        });
+                       .then((response) => response.text())
+                          .then((data) => { */
+                        /* contentsSec.innerHTML = data; */
+                        /*   console.error(data);
+                          })
+                          .catch((error) => console.error("Error:", error)); */
+
+                        //.................................................. Book awating for approval...................................................................................................................
+
+                        console.log("book created, waiting for approval");
+                        fetch("/admin/approval", {
+                          method: "GET",
+                          headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem(
+                              "jwtToken"
+                            )}`,
+                          },
                         })
                           .then((response) => response.text())
                           .then((data) => {
-                            /* contentsSec.innerHTML = data; */
-                            console.error(data);
+                            galleryCont.innerHTML = data;
+                            //retrun to home
                           })
                           .catch((error) => console.error("Error:", error));
                       }

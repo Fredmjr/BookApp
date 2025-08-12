@@ -68,7 +68,7 @@ function galleryFunc() {
         let defaultBooks = document.querySelector("#defaultBooks");
         /* console.log(data); */
         /*    page.appendChild(prevDiv.firstElementChild); */
-        if (page.innerHTML !== "") {
+        /*         if (page.innerHTML !== "") {
           defaultBooks.style.display = "none";
           page.style.display = "flex";
           page.style.flexWrap = "wrap";
@@ -79,7 +79,7 @@ function galleryFunc() {
           bookContFunc();
         } else {
           console.log("empty");
-        }
+        } */
       });
     });
 }
@@ -224,4 +224,11 @@ searchBtn.addEventListener("click", () => {
       }
     })
     .catch((error) => console.error("Error displaying file:", error));
+});
+
+//.......................................................... getstarted section....................................................................
+const getstartedBtn = document.querySelector("#getstartedBtn");
+getstartedBtn.addEventListener("click", () => {
+  /*   console.log("getstarted here"); */
+  swapLoginFuc();
 });

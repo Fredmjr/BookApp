@@ -85,4 +85,356 @@ h2 {
   }
 }
 
-/* setings page */
+/* ...................................................... Profile page............................................*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+:root {
+  --prfl-bg-dark: #1a1a1a;
+  --prfl-text-light: #a0a0a0;
+  --prfl-accent-color: #f5deb3;
+  --prfl-border-color: #505050;
+  --prfl-card-bg: #2a2a2a;
+}
+
+.profl-container {
+  font-family: "Inter", sans-serif;
+  background-color: var(--prfl-bg-dark);
+  color: var(--prfl-text-light);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profl-header,
+.profl-card {
+  background-color: var(--prfl-card-bg);
+  border: 1px solid var(--prfl-border-color);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.profl-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.profl-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--prfl-accent-color);
+}
+
+.profl-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  text-align: center;
+}
+
+.profl-bio {
+  font-size: 0.9rem;
+  color: var(--prfl-text-light);
+  margin: 0;
+}
+
+.profl-content-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profl-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--prfl-accent-color);
+  border-bottom: 2px solid var(--prfl-border-color);
+  padding-bottom: 8px;
+  margin: 0 0 20px 0;
+}
+
+.profl-activity-text {
+  font-weight: 600; 
+}
+
+.profl-timestamp {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--prfl-text-light);
+  margin-top: 4px;
+}
+
+.profl-book-name {
+  font-weight: 600; 
+}
+
+.profl-file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profl-file-item {
+  padding: 12px;
+  border-bottom: 1px solid var(--prfl-border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profl-file-item:last-child {
+  border-bottom: none;
+}
+
+.profl-file-name {
+  font-size: 1rem;
+  color: #fff;
+  display: block;/
+}
+
+.profl-file-size {
+  font-size: 0.8rem;
+  color: var(--prfl-text-light);
+}
+
+@media (min-width: 600px) {
+  .profl-content-sections {
+    flex-direction: row;
+  }
+  .profl-card {
+    flex: 1;
+  }
+  .profl-header {
+    text-align: left;
+    flex-direction: row;
+    align-items: center;
+  }
+  .profl-header .profl-info {
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profl-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .profl-header {
+    flex: 0 0 300px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .profl-content-sections {
+    flex-direction: column;
+    flex: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*...............................................................Book shelf secion.................................................*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+    --shelf-bg-dark: #1a1a1a;
+    --shelf-text-light: #a0a0a0;
+    --shelf-accent-color: #f5deb3;
+    --shelf-border-color: #505050;
+    --shelf-card-bg: #2a2a2a;
+}
+
+.shelf-container {
+      font-family: 'Inter', sans-serif;
+    background-color: var(--shelf-bg-dark);
+    color: var(--shelf-text-light);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    gap: 20px;
+}
+
+.shelf-card {
+    background-color: var(--shelf-card-bg);
+    border: 1px solid var(--shelf-border-color);
+    border-radius: 12px;
+    padding: 24px;
+    flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
+}
+
+.shelf-section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--shelf-accent-color);
+    border-bottom: 2px solid var(--shelf-border-color);
+    padding-bottom: 8px;
+    margin: 0 0 20px 0;
+}
+
+.shelf-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shelf-list-item {
+    padding: 12px;
+    border-bottom: 1px solid var(--shelf-border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.shelf-list-item:last-child {
+    border-bottom: none;
+}
+
+.shelf-book-name {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.shelf-book-status {
+    font-size: 0.8rem;
+    color: var(--shelf-text-light);
+    margin-top: 4px;
+}
+
+
+/*.........................................................user activity page..................................................*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+    --actty-bg-dark: #1a1a1a;
+    --actty-text-light: #a0a0a0;
+    --actty-accent-color: #f5deb3;
+    --actty-border-color: #505050;
+    --actty-card-bg: #2a2a2a;
+}
+
+
+.actty-container {
+      font-family: 'Inter', sans-serif;
+    background-color: var(--actty-bg-dark);
+    color: var(--actty-text-light);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+.actty-card {
+    background-color: var(--actty-card-bg);
+    border: 1px solid var(--actty-border-color);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.actty-section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--actty-accent-color);
+    border-bottom: 2px solid var(--actty-border-color);
+    padding-bottom: 8px;
+    margin: 0 0 20px 0;
+}
+
+.actty-feed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.actty-feed-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--actty-border-color);
+}
+
+.actty-feed-item:last-child {
+    border-bottom: none;
+}
+
+.actty-feed-description {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+}
+
+.actty-feed-timestamp {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--actty-text-light);
+    margin-top: 4px;
+}
+
+.actty-stats-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.actty-stats-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--actty-border-color);
+}
+
+.actty-stats-item:last-child {
+    border-bottom: none;
+}
+
+.actty-stats-label {
+    font-weight: 600;
+    color: #fff;
+}
+
+.actty-stats-value {
+    color: var(--actty-accent-color);
+    font-weight: 600;
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 768px) {
+    .actty-container {
+        flex-direction: row; /* Arrange cards in a row on larger screens */
+        align-items: flex-start;
+    }
+
+    .actty-activity-card {
+        flex: 2; /* Main activity feed takes up more space */
+    }
+
+    .actty-stats-card {
+        flex: 1; /* Stats card is a sidebar */
+    }
+}
+
+
+/*................................................. settings page.............................................................................................*/

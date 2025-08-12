@@ -655,3 +655,7 @@ export const fileformatValidationold = async (req, res) => {
     console.log(bookFileExt);
   }
 };
+
+export const BookApproval = async (req, res) => {
+  res.render("components/approval");
+};

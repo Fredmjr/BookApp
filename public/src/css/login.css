@@ -46,6 +46,8 @@
 .signFormGroup input[type="text"],
 .signFormGroup input[type="email"],
 .signFormGroup input[type="password"] {
+  display: flex;
+  justify-self: center;
   width: calc(100% - 20px); /* Adjust for padding */
   padding: 12px 10px;
   border: 1px solid #505050; /* Input border color */
@@ -65,8 +67,8 @@
 .signFormGroup input[type="text"]:focus,
 .signFormGroup input[type="email"]:focus,
 .signFormGroup input[type="password"]:focus {
-  border-color: #6a5acd; /* Purple for focus border */
-  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.4); /* Focus glow */
+  border-color: wheat; /* Purple for focus border */
+  box-shadow: 0 0 0 3px wheat(106, 90, 205, 0.4); /* Focus glow */
   outline: none;
 }
 
@@ -74,7 +76,7 @@
   /* Updated class name */
   width: 92%;
   padding: 12px 20px;
-  background-color: #6a5acd; /* Button background */
+  background-color: brown; /* Button background */
   color: white;
   border: none;
   border-radius: 8px;
@@ -87,7 +89,7 @@
 }
 
 .signRegisterBtn:hover {
-  background-color: #7b68ee; /* Button hover background */
+  background-color: rgba(234, 35, 35, 0.994); /* Button hover background */
   transform: translateY(-2px);
 }
 
@@ -106,14 +108,15 @@
 }
 
 .signLink {
-  color: #8a2be2; /* Link color (BlueViolet) */
+  color: wheat; /* Link color (BlueViolet) */
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  font-weight: bolder;
 }
 
 .signLink:hover {
-  color: #9370db; /* Link hover color (MediumPurple) */
+  color: wheat; /* Link hover color (MediumPurple) */
   text-decoration: underline;
 }
 
@@ -159,6 +162,8 @@
 .logFormGroup input[type="text"],
 .logFormGroup input[type="email"],
 .logFormGroup input[type="password"] {
+  display: flex;
+  justify-self: center;
   width: calc(100% - 20px); /* Adjust for padding */
   padding: 12px 10px;
   border: 1px solid #505050; /* Input border color */
@@ -179,16 +184,17 @@
 .logFormGroup input[type="text"]:focus,
 .logFormGroup input[type="email"]:focus,
 .logFormGroup input[type="password"]:focus {
-  border-color: #6a5acd; /* Purple for focus border */
-  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.4); /* Focus glow */
+  border-color: wheat; /* Purple for focus border */
   outline: none;
 }
 
 .logLoginBtn {
   /* Class for the login button */
+  display: flex;
+  justify-self: center;
   width: 92%;
-  padding: 12px 20px;
-  background-color: #6a5acd; /* Button background */
+  padding: 12px 10px;
+  background-color: brown; /* Button background */
   color: white;
   border: none;
   border-radius: 8px;
@@ -196,17 +202,35 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 12px;
   margin-top: 10px;
   box-sizing: border-box; /* Added to ensure padding is included in the width */
 }
 
 .logLoginBtn:hover {
-  background-color: #7b68ee; /* Button hover background */
+  background-color: rgba(234, 35, 35, 0.994); /* Button hover background */
   transform: translateY(-2px);
 }
 
 .logLoginBtn:active {
   transform: translateY(0);
+}
+.errorMgsLogin {
+  /* Class for the login button */
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  width: 92%;
+  padding: 12px 20px;
+  /*background-color: brown;*/
+  color: #f5deb3;
+  border: 2px solid red;
+  border-radius: 3px;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  box-sizing: border-box; /* Added to ensure padding is included in the width */
 }
 
 .logFooter {
@@ -221,14 +245,15 @@
 }
 
 .logLink {
-  color: #8a2be2; /* Link color (BlueViolet) */
+  color: wheat; /* Link color (BlueViolet) */
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  font-weight: bolder;
 }
 
 .logLink:hover {
-  color: #9370db; /* Link hover color (MediumPurple) */
+  color: wheat; /* Link hover color (MediumPurple) */
   text-decoration: underline;
 }
 
