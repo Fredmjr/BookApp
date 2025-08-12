@@ -241,8 +241,37 @@ function testingFuc() {
                       } else {
                         //..................file format
                         console.log(data.mgs + "book file format......");
-                        console.log("testing github action's image.");
                         //..................file format
+                        //...............................................create book Fetch request..........................................................
+                        console.log(
+                          ctlTitle,
+                          ctlDescription,
+                          ctlbookCover,
+                          ctlbookFile
+                        );
+                        const formData = new FormData();
+                        formData.append("title", ctlTitle);
+                        formData.append("description", ctlDescription);
+                        formData.append("bookCover", ctlbookCover);
+                        formData.append("bookFile", ctlbookFile);
+                        console.log(formData);
+
+                        fetch("/app/cloud1AImodel", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem(
+                              "jwtToken"
+                            )}`,
+                            body: formData,
+                          },
+                        })
+                          .then((response) => response.text())
+                          .then((data) => {
+                            /* contentsSec.innerHTML = data; */
+                            console.error(data);
+                          })
+                          .catch((error) => console.error("Error:", error));
                       }
                       //.....................not-empty
                     }
