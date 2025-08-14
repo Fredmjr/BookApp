@@ -16,4 +16,4 @@ Extra Services include;
 - Docker
 - And more
 
-> **Note**: Application is still in development. As such before use, be notified that it has a couple of errors and disconnected functionable code.
+> **Note**: Application is still in development. As such before use, be notified that it has a multiple errors and disconnected functionable code.
