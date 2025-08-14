@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../src/js/utiles/utilies.js"],
-  "sourcesContent": ["export const $ = (elem) => {\r\n    return document.querySelector(elem)\r\n}"],
-  "mappings": ";;;;AAAO,IAAM,IAAI,wBAAC,SAAS;AACvB,SAAO,SAAS,cAAc,IAAI;AACtC,GAFiB;",
-  "names": []
-}

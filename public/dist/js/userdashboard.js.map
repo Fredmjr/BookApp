@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/js/userdashboard.js"],
-  "sourcesContent": ["function usrshowPanel(id) {\r\n  document.getElementById(\"usr-card-section\").style.display = \"none\";\r\n  document.querySelectorAll(\".usr-content-panel\").forEach((panel) => {\r\n    panel.style.display = \"none\";\r\n  });\r\n  document.getElementById(id).style.display = \"block\";\r\n}\r\nwindow.usrshowPanel = usrshowPanel;\r\n\r\nfunction usrhidePanel() {\r\n  document.getElementById(\"usr-card-section\").style.display = \"block\";\r\n  document.querySelectorAll(\".usr-content-panel\").forEach((panel) => {\r\n    panel.style.display = \"none\";\r\n  });\r\n}\r\n\r\n//settings page\r\n"],
-  "mappings": ";;;;AAAA,SAAS,aAAa,IAAI;AACxB,WAAS,eAAe,kBAAkB,EAAE,MAAM,UAAU;AAC5D,WAAS,iBAAiB,oBAAoB,EAAE,QAAQ,CAAC,UAAU;AACjE,UAAM,MAAM,UAAU;AAAA,EACxB,CAAC;AACD,WAAS,eAAe,EAAE,EAAE,MAAM,UAAU;AAC9C;AANS;AAOT,OAAO,eAAe;",
-  "names": []
-}
